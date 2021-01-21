@@ -1,5 +1,7 @@
-# Repo Name
+# NoseBot
 
-[![Image](https://img.shields.io/badge/Download-V1.0-success?style=for-the-badge)]() [![Image](https://img.shields.io/badge/.NET-V4.7.2+-informational?style=for-the-badge)](https://dotnet.microsoft.com/)
+[![Image](https://img.shields.io/badge/NodeJS-V15.6.0-informational?style=for-the-badge)](https://nodejs.org/)
 
-(Project Disc)
+A discord bot that replys to people who say 'nose' with images of Dog Noses...<br>It Works in servers and in DMs!
+
+![Example](https://i.imgur.com/uO4oDfS.png)
