@@ -16,14 +16,14 @@ client.on('message', async msg => {
         msg.reply('Nose!');
         x = Math.floor((Math.random() * 89) + 1);
         msg.reply('https://connorcode.com/Main_Assets/Noses/'+x+'.jpg');
-        
+
     }if (message.includes('$nosespam')){
         msg.reply('Nose!');
-        for (i = 0; i < 2; i++) { 
+        for (i = 0; i < 2; i++) {
             x = Math.floor((Math.random() * 89) + 1);
         msg.reply('https://connorcode.com/Main_Assets/Noses/'+x+'.jpg');
     }
  }
 });
 
-client.login('NzE3OTY4NTc5MzM2NjAxNjYx.XtiCrQ.vO6f8ZJ00fRdiYuo8cdfrnj-xmo');
+client.login('<-- CLIENT ID -->');
