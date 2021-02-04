@@ -6,7 +6,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Basicprogrammer10/WindowOnTop">
-    <img src="https://github.com/Basicprogrammer10/NoseBot/blob/master/NoseBot.png" alt="Logo" width="160" height="160">
+    <img src="https://github.com/Basicprogrammer10/NoseBot/blob/master/NoseBot.png" alt="Logo" width="240" height="240">
   </a>
 
   <h3 align="center">NoseBot</h3>
