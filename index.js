@@ -1,4 +1,4 @@
-color = { "main": "#2fc290", "help": "#E8DD4D", "red":"#DB5953", "link":"#27E2E8"};
+color = { "main": "#2fc290", "help": "#E8DD4D", "red":"#DB5953", "link":"#27E2E8", "nose":"#00EAFF"};
 commandPrefix = "$";
 version = "0.0.24";
 
@@ -100,9 +100,9 @@ const commands = {
         "help": embedMessage(color.help, 'Help: Nose', 'Noses You!\nUsage: `$nose`'),
         "usage": 'nose',
         process: function (msg, command) {
-            msg.reply('Nose!');
             x = Math.floor((Math.random() * 89) + 1);
-            msg.reply('https://connorcode.com/Main_Assets/Noses/'+x+'.jpg');
+            noseUrl = 'https://connorcode.com/Main_Assets/Noses/'+x+'.jpg'
+            msg.channel.send(embedMessage(color.nose, "Nose! :dog:", "").setImage(noseUrl));
         }
     },
     "ping": {
@@ -170,7 +170,7 @@ const commands = {
         "help": embedMessage(color.help, 'Help: Version', 'Gives Version Info\nUsage: `$version`'),
         "usage": 'version',
         process: function (msg, command) {
-            msg.channel.send(embedMessage(color.main, "Version", 'Version: ' + version + '\n Created by Sigma76\nDiscord: Sigma#8214').setThumbnail('https://i.imgur.com/Fyv02Qd.png'));
+            msg.channel.send(embedMessage(color.main, "Version", 'Version: ' + version + '\n Created by Sigma76\nDiscord: Sigma#8214').setThumbnail('https://i.imgur.com/Fyv02Qd.png').setURL("https://github.com/Basicprogrammer10"));
         }
     },
     "eval": {
