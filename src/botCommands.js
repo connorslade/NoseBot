@@ -51,6 +51,13 @@ module.exports = {
                 }
             }
         },
+        "github": {
+            "help": common.embedMessage(color.help, 'Help: Github', 'Sends you to the NoseBot Github\nUsage: `$github`'),
+            "usage": 'github',
+            process: function (msg, command) {
+                msg.channel.send(common.embedMessage(color.main, 'Github :octopus:', '**NoseBot**\nhttps://github.com/Basicprogrammer10/NoseBot').setThumbnail('https://i.imgur.com/7dEMK3N.png'));
+            }
+        },
         "help": {
             "help": common.embedMessage(color.help, 'Help: Help', 'No explanation Needed...\nUsage: `$help [command]`'),
             "usage": 'help [command]',
