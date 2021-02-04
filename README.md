@@ -6,7 +6,7 @@
 
 <br />
 <p align="center">
-  <a href="https://github.com/Basicprogrammer10/WindowOnTop">
+  <a href="https://github.com/Basicprogrammer10/NoseBot">
     <img src="https://github.com/Basicprogrammer10/NoseBot/blob/master/NoseBot.png" alt="Logo" width="240" height="240">
   </a>
 
@@ -57,8 +57,8 @@ The Main GUI...
 
 ### Built With
 
-* [NodeJS]()
-* [Discord.JS]()
+* [NodeJS](https://nodejs.org/)
+* [Discord.JS](https://discord.js.org/#/)
 
 
 <!-- GETTING STARTED -->
@@ -68,7 +68,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* [NodeJS]() (To run the Program)
+* [NodeJS](https://nodejs.org/) (To run the Program)
 
 ### Installation
 
