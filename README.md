@@ -1,6 +1,7 @@
 
 [![Image](https://img.shields.io/badge/Download-V0.1.0-sucess?style=for-the-badge)](https://github.com/Basicprogrammer10/NoseBot/releases/) 
 [![Image](https://img.shields.io/badge/NodeJS-V15.6.0-informational?style=for-the-badge)](https://nodejs.org/)
+![Image](https://img.shields.io/badge/Nose_It-To_The_Max-magenta?style=for-the-badge)
 ![Image](https://img.shields.io/badge/Contains-Tasty_Spaghetti_Code-orange?style=for-the-badge)
 
 <br />
