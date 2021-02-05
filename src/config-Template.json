@@ -1,5 +1,6 @@
 {
     "clientId": "<CLIENT ID>",
     "adminId": "466967710685855744",
+    "version": "0.1.2",
     "commandPrefix": "$"
 }
