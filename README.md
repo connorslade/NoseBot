@@ -1,12 +1,13 @@
 
 [![Image](https://img.shields.io/badge/Download-V0.1.0-sucess?style=for-the-badge)](https://github.com/Basicprogrammer10/NoseBot/releases/) 
 [![Image](https://img.shields.io/badge/NodeJS-V15.6.0-informational?style=for-the-badge)](https://nodejs.org/)
+![Image](https://img.shields.io/badge/Nose_It-To_The_Max-magenta?style=for-the-badge)
 ![Image](https://img.shields.io/badge/Contains-Tasty_Spaghetti_Code-orange?style=for-the-badge)
 
 <br />
 <p align="center">
-  <a href="https://github.com/Basicprogrammer10/WindowOnTop">
-    <img src="https://github.com/Basicprogrammer10/WindowOnTop/blob/master/windowIcon.png" alt="Logo" width="160" height="160">
+  <a href="https://github.com/Basicprogrammer10/NoseBot">
+    <img src="https://github.com/Basicprogrammer10/NoseBot/blob/master/NoseBot.png" alt="Logo" width="240" height="240">
   </a>
 
   <h3 align="center">NoseBot</h3>
@@ -56,8 +57,8 @@ The Main GUI...
 
 ### Built With
 
-* [NodeJS]()
-* [Discord.JS]()
+* [NodeJS](https://nodejs.org/)
+* [Discord.JS](https://discord.js.org/#/)
 
 
 <!-- GETTING STARTED -->
@@ -67,7 +68,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* [NodeJS]() (To run the Program)
+* [NodeJS](https://nodejs.org/) (To run the Program)
 
 ### Installation
 
