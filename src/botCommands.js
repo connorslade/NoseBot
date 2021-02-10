@@ -14,7 +14,7 @@ module.exports = {
             "usage": 'among-us <code>',
             process: function (msg, command) {
                 if (command.length > 1) {
-                    var working = msg.content.split(commandPrefix + 'among-us ')[1];
+                    let working = msg.content.split(commandPrefix + 'among-us ')[1];
                     msg.channel.send(common.embedMessage("#FFDF1E", 'Among Us Code', 'Join Among Us now!\n**Code:** `' + working + '`').setThumbnail("https://i.imgur.com/wraEjgu.jpg").setFooter(common.getFormatDT()));
                 } else {
                     msg.channel.send(common.embedMessage(color.red, 'Error', 'No code Supplied\nUsage: `$among-us <code>`'));
@@ -26,7 +26,7 @@ module.exports = {
             "usage": 'bugreport <text>',
             process: function (msg, command) {
                 if (command.length > 1) {
-                    var working = msg.content.split(commandPrefix + 'bugreport ')[1];
+                    let working = msg.content.split(commandPrefix + 'bugreport ')[1];
                     msg.channel.send(common.embedMessage(color.main, 'Bugreport :bug:', 'Bug has been Reported!\n`' + working + '`'));
                 } else {
                     msg.channel.send(common.embedMessage(color.red, 'Error', 'No text Supplied'));
@@ -111,27 +111,23 @@ module.exports = {
             "usage": 'minecraft <URL>',
             process: function (msg, command) {
                 if (command.length > 1) {
-                    var working = msg.content.split(commandPrefix + 'minecraft ')[1];
+                    let working = msg.content.split(commandPrefix + 'minecraft ')[1];
                     https.get('https://api.mcsrvstat.us/2/' + working, (response) => {
                         let todo = '';
 
                         response.on('data', (chunk) => {todo += chunk;});
 
                         response.on('end', () => {
-                            var jsonResponce = JSON.parse(todo);
-                            if (jsonResponce.online){
-                                var text = `**URL:** \`${working}\`\n**MOTD:** \`${(jsonResponce['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponce['players']['online']}\`/\`${jsonResponce['players']['max']}\`\n**IP:** \`${jsonResponce['ip']}${(':'+jsonResponce['port']).replace(':25565','')}\``;
-                                var req=jsonResponce.icon;
-                                var base64Data = req.replace(/^data:image\/png;base64,/, "");
-                                require("fs").writeFile(".tmp.png", base64Data, 'base64', function () {});
-                                const attachment = new Discord.MessageAttachment('./.tmp.png', 'tmp.png');
+                            let jsonResponse = JSON.parse(todo);
+                            if (jsonResponse.online){
+                                let text = `**URL:** \`${working}\`\n**MOTD:** \`${(jsonResponse['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponse['players']['online']}\`/\`${jsonResponse['players']['max']}\`\n**IP:** \`${jsonResponse['ip']}${(':'+jsonResponse['port']).replace(':25565','')}\``;
+                                const attachment = new Discord.MessageAttachment(common.base64ToPng(jsonResponse.icon, '.tmp.png'), 'tmp.png');
                                 msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(attachment).setThumbnail("attachment://tmp.png").setFooter(common.getFormatDT()));
                             }else {
-                                var text = `**URL:** \`${working}\`\n**OFFLINE**`;
+                                let text = `**URL:** \`${working}\`\n**OFFLINE**`;
                                 msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).setThumbnail("https://i.imgur.com/CT4tVWf.png").setFooter(common.getFormatDT()));
                             }
                         });
-
                     });
 
                 } else {
@@ -152,7 +148,7 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Ping', 'Get the ping\nUsage: `$ping`'),
             "usage": 'ping',
             process: function (msg, command) {
-                var ping = Date.now() - msg.createdTimestamp;
+                let ping = Date.now() - msg.createdTimestamp;
                 msg.channel.send(common.embedMessage(color.main, 'Ping', 'Ping: ' + ping.toString() + 'ms\nAPI:  ' + Math.round(client.ws.ping).toString() + 'ms'))
             }
         },
@@ -174,7 +170,7 @@ module.exports = {
             process: function (msg, command) {
                 if (command.length > 1) {
                     working = '';
-                    for (var i = 1; i < command.length; i++) {
+                    for (let i = 1; i < command.length; i++) {
                         working = working + ' ' + command[i]
                     }
                     if (working.length > 1) {
@@ -220,7 +216,7 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Eval', 'Hidden Command for Kool Peeps only (AKA not you)'),
             process: function (msg, command) {
                 if (msg.author.id == config.adminId) {
-                    var working = '';
+                    let working = '';
                     for (i in command) {
                         working = working + command[i] + ' '
                     }

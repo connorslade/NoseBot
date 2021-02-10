@@ -13,8 +13,8 @@ client.on('ready', () => {
 
 client.on("message", async (msg) => {
     if (msg.content.charAt(0).toLowerCase() === commandPrefix) {
-        console.log('\033[32m' + msg.author['username'] + '#' + msg.author['discriminator'] + ': ' + msg.content + '\033[0m')
-        var command = msg.content.split(commandPrefix)[1].split(' ')
+        console.log('\033[32m' + msg['author']['username'] + '#' + msg['author']['discriminator'] + ': ' + msg.content + '\033[0m')
+        let command = msg.content.split(commandPrefix)[1].split(' ');
         if (Object.keys(commandJS.commands).includes(command[0].toLowerCase())) {
             try{
                 commandJS.commands[command[0].toLowerCase()].process(msg, command);

@@ -5,10 +5,12 @@ module.exports = {
     embedMessage: function (embedColor, title, text) { return new Discord.MessageEmbed().setColor(embedColor).setTitle(title).setDescription(text) },
 
     msToTime: function (duration) {
-        var milliseconds = parseInt((duration % 1000) / 100),
-            seconds = Math.floor((duration / 1000) % 60),
-            minutes = Math.floor((duration / (1000 * 60)) % 60),
-            hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+        let milliseconds, seconds, minutes, hours;
+        let durationInt = parseInt(duration, 0);
+        milliseconds = parseInt((durationInt % 1000) / 100);
+        seconds = Math.floor((duration / 1000) % 60);
+        minutes = Math.floor((duration / (1000 * 60)) % 60);
+        hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
         hours = (hours < 10) ? "0" + hours : hours;
         minutes = (minutes < 10) ? "0" + minutes : minutes;
@@ -18,15 +20,19 @@ module.exports = {
     },
 
     getFormatDT: function () {
-        var currentdate = new Date();
-        var datetime =
-            (currentdate.getMonth() + 1) + "/"
-            + currentdate.getDate() + "/"
-            + currentdate.getFullYear() + " — "
-            + currentdate.getHours() + ":"
-            + currentdate.getMinutes() + ":"
-            + currentdate.getSeconds();
-        return datetime
+        let currentDate = new Date();
+        return (currentDate.getMonth() + 1) + "/"
+            + currentDate.getDate() + "/"
+            + currentDate.getFullYear() + " — "
+            + currentDate.getHours() + ":"
+            + currentDate.getMinutes() + ":"
+            + currentDate.getSeconds();
+    },
+
+    base64ToPng: function (req, fileName) {
+        let base64Data = req.replace(/^data:image\/png;base64,/, "");
+        require("fs").writeFile(fileName, base64Data, 'base64', function () {});
+        return fileName;
     },
 
     loadConfig: function (configFile) {
