@@ -120,15 +120,15 @@ module.exports = {
                         response.on('end', () => {
                             var jsonResponce = JSON.parse(todo);
                             if (jsonResponce.online){
-                                var text = `**URL:** \`${working}\`\n**MOTD:** \`${(jsonResponce['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponce['players']['online']}\`/\`${jsonResponce['players']['max']}\`\n**IP:**\`${jsonResponce['ip']}${(':'+jsonResponce['port']).replace(':25565','')}\``;
+                                var text = `**URL:** \`${working}\`\n**MOTD:** \`${(jsonResponce['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponce['players']['online']}\`/\`${jsonResponce['players']['max']}\`\n**IP:** \`${jsonResponce['ip']}${(':'+jsonResponce['port']).replace(':25565','')}\``;
                                 var req=jsonResponce.icon;
                                 var base64Data = req.replace(/^data:image\/png;base64,/, "");
                                 require("fs").writeFile(".tmp.png", base64Data, 'base64', function () {});
                                 const attachment = new Discord.MessageAttachment('./.tmp.png', 'tmp.png');
-                                msg.channel.send(common.embedMessage(color.main, 'Minecraft Server :video_game:', text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(attachment).setThumbnail("attachment://tmp.png").setFooter(common.getFormatDT()));
+                                msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(attachment).setThumbnail("attachment://tmp.png").setFooter(common.getFormatDT()));
                             }else {
                                 var text = `**URL:** \`${working}\`\n**OFFLINE**`;
-                                msg.channel.send(common.embedMessage(color.main, 'Minecraft Server :video_game:', text).setURL('https://mcsrvstat.us/server/'+working).setThumbnail("https://i.imgur.com/CT4tVWf.png").setFooter(common.getFormatDT()));
+                                msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).setThumbnail("https://i.imgur.com/CT4tVWf.png").setFooter(common.getFormatDT()));
                             }
                         });
 
