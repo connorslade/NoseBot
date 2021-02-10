@@ -51,7 +51,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Screen Shot](https://i.imgur.com/lAGYlvD.png)](https://github.com/Basicprogrammer10/NoseBot)
+[![Screen Shot](https://i.imgur.com/ryRgBT7.png)](https://github.com/Basicprogrammer10/NoseBot)
 
 The Main GUI...
 
