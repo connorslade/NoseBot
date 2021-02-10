@@ -107,7 +107,7 @@ module.exports = {
             }
         },
         "minecraft": {
-            "help": common.embedMessage(color.help, 'Help: minecraft', 'Sends Minecraft Server URL\nUsage: `$minecraft <URL>`'),
+            "help": common.embedMessage(color.help, 'Help: minecraft', 'Sends Minecraft Server Info\nUsage: `$minecraft <URL>`'),
             "usage": 'minecraft <URL>',
             process: function (msg, command) {
                 if (command.length > 1) {
