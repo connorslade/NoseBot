@@ -1,6 +1,7 @@
 {
     "clientId": "<CLIENT ID>",
     "adminId": "466967710685855744",
+    "activity": "$help",
     "version": "0.1.3",
     "commandPrefix": "$"
 }
