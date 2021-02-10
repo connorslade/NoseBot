@@ -1,5 +1,6 @@
 const { magneticConstantDependencies, max, min } = require("mathjs");
 const common = require('./common.js');
+const https = require('https');
 const math = require('mathjs');
 
 module.exports = {
@@ -49,6 +50,20 @@ module.exports = {
                 } else {
                     msg.channel.send(common.embedMessage(color.main, 'Coinflip', ':coin: Tails'));
                 }
+            }
+        },
+        "fotd": {
+            "help": common.embedMessage(color.help, 'Help: FOTD', 'Sends you a Random Fact! :grin:\nUsage: `$fotd`'),
+            "usage": 'fotd',
+            process: function (msg, command) {
+                https.get('https://uselessfacts.jsph.pl/random.json?language=en', (response) => {
+                let todo = '';
+
+                response.on('data', (chunk) => {todo += chunk;});
+
+                response.on('end', () => {msg.channel.send(common.embedMessage(color.main, 'FOTD :factory:', '**Fact of that day!!!**\n```' + JSON.parse(todo)['text'] + '```').setURL(JSON.parse(todo)['permalink']));});
+
+                });
             }
         },
         "github": {
