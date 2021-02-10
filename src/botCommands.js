@@ -120,7 +120,7 @@ module.exports = {
                         response.on('end', () => {
                             var jsonResponce = JSON.parse(todo);
                             if (jsonResponce.online){
-                                var text = `**URL:** \`${working}\`\n**IP:** \`${jsonResponce['ip']}:${jsonResponce['port']}\`\n**MOTD:** \`${(jsonResponce['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponce['players']['online']}\`/\`${jsonResponce['players']['max']}\``;
+                                var text = `**URL:** \`${working}\`\n**MOTD:** \`${(jsonResponce['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponce['players']['online']}\`/\`${jsonResponce['players']['max']}\`\n**IP:**\`${jsonResponce['ip']}${(':'+jsonResponce['port']).replace(':25565','')}\``;
                                 var req=jsonResponce.icon;
                                 var base64Data = req.replace(/^data:image\/png;base64,/, "");
                                 require("fs").writeFile(".tmp.png", base64Data, 'base64', function () {});
