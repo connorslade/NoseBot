@@ -1,5 +1,9 @@
 const { magneticConstantDependencies, max, min } = require("mathjs");
 const common = require('./common.js');
+
+const Discord = require("discord.js");
+const fs = require("fs");
+
 const https = require('https');
 const math = require('mathjs');
 
@@ -108,7 +112,28 @@ module.exports = {
             process: function (msg, command) {
                 if (command.length > 1) {
                     var working = msg.content.split(commandPrefix + 'minecraft ')[1];
-                    msg.channel.send(common.embedMessage("#6ba940", 'Minecraft URL', 'Join Minecraft now!\n**URL:** `' + working + '`').setThumbnail("https://i.imgur.com/CT4tVWf.png").setFooter(common.getFormatDT()));
+                    https.get('https://api.mcsrvstat.us/2/' + working, (response) => {
+                        let todo = '';
+
+                        response.on('data', (chunk) => {todo += chunk;});
+
+                        response.on('end', () => {
+                            var jsonResponce = JSON.parse(todo);
+                            if (jsonResponce.online){
+                                var text = `**URL:** \`${working}\`\n**IP:** \`${jsonResponce['ip']}:${jsonResponce['port']}\`\n**MOTD:** \`${(jsonResponce['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponce['players']['online']}\`/\`${jsonResponce['players']['max']}\``;
+                                var req=jsonResponce.icon;
+                                var base64Data = req.replace(/^data:image\/png;base64,/, "");
+                                require("fs").writeFile(".tmp.png", base64Data, 'base64', function () {});
+                                const attachment = new Discord.MessageAttachment('./.tmp.png', 'tmp.png');
+                                msg.channel.send(common.embedMessage(color.main, 'Minecraft Server :video_game:', text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(attachment).setThumbnail("attachment://tmp.png").setFooter(common.getFormatDT()));
+                            }else {
+                                var text = `**URL:** \`${working}\`\n**OFFLINE**`;
+                                msg.channel.send(common.embedMessage(color.main, 'Minecraft Server :video_game:', text).setURL('https://mcsrvstat.us/server/'+working).setThumbnail("https://i.imgur.com/CT4tVWf.png").setFooter(common.getFormatDT()));
+                            }
+                        });
+
+                    });
+
                 } else {
                     msg.channel.send(common.embedMessage(color.red, 'Error', 'No URL Supplied\nUsage: `$minecraft <URL>`'));
                 }
