@@ -49,7 +49,7 @@ module.exports = {
     },
 
     rgbToHex: function (r, g, b) {
-        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        return componentToHex(r) + componentToHex(g) + componentToHex(b);
     },
 
     loadConfig: function (configFile) {
