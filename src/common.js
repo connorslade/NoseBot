@@ -1,3 +1,4 @@
+const randomSeed = require('seedrandom');
 const Discord = require("discord.js");
 const fs = require("fs");
 
@@ -50,6 +51,11 @@ module.exports = {
 
     rgbToHex: function (r, g, b) {
         return componentToHex(r) + componentToHex(g) + componentToHex(b);
+    },
+
+    randomFromSeed: function (string) {
+        let rng = randomSeed(string);
+        return  rng()
     },
 
     loadConfig: function (configFile) {
