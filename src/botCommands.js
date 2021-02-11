@@ -9,6 +9,25 @@ const math = require('mathjs');
 
 module.exports = {
     "commands": {
+        "8ball": {
+            "help": common.embedMessage(color.help, 'Help: 8Ball', 'Asks the 8Ball\nUsage: `$8ball <question>`'),
+            "usage": '8ball <question>',
+            process: function (msg, command) {
+                let eightBall = [
+                    'It is certain', 'It is decidedly so', 'Without a doubt', 'Yes – definitely', 'You may rely on it',
+                    'As I see it, yes', 'Most likely', 'Outlook good', 'Yes', 'Signs point to yes', 'Reply hazy, try again',
+                    'Ask again later', 'Better not tell you now', 'Cannot predict now', 'Concentrate and ask again',
+                    'Don\'t count on it', 'My reply is no', 'My sources say no', 'Outlook not so good', 'Very doubtful'];
+
+                if (command.length > 1) {
+                    let working = msg.content.split(commandPrefix + '8ball ')[1];
+                    let answer = eightBall[Math.floor(Math.random() * eightBall.length)];
+                    msg.channel.send(common.embedMessage("#FFDF1E", '8Ball :8ball:', `**Question:** \`${working}\`\n**Response:** \`${answer}\``));
+                } else {
+                    msg.channel.send(common.embedMessage(color.red, '8Ball :8ball: ', 'No question Supplied\nUsage: `$8ball <question>`'));
+                }
+            }
+        },
         "among-us": {
             "help": common.embedMessage(color.help, 'Help: among-us', 'Sends among us server code\nUsage: `$among-us <code>`'),
             "usage": 'among-us <code>',
@@ -217,7 +236,7 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Version', 'Gives Version Info\nUsage: `$version`'),
             "usage": 'version',
             process: function (msg, command) {
-                msg.channel.send(common.embedMessage(color.main, "Version", 'Version: ' + version + '\n Created by Sigma76\nDiscord: Sigma#8214').setThumbnail('https://i.imgur.com/Fyv02Qd.png').setURL("https://github.com/Basicprogrammer10"));
+                msg.channel.send(common.embedMessage(color.main, "Version", 'Version: ' + version + '\n Created by **Sigma76**\nDiscord: Sigma#8214').setThumbnail('https://i.imgur.com/Fyv02Qd.png').setURL("https://github.com/Basicprogrammer10"));
             }
         },
         "eval": {
