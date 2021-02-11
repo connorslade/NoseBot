@@ -1,6 +1,11 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 
+function componentToHex(c) {
+    let hex = c.toString(16);
+    return hex.length === 1 ? "0" + hex : hex;
+}
+
 module.exports = {
     embedMessage: function (embedColor, title, text) { return new Discord.MessageEmbed().setColor(embedColor).setTitle(title).setDescription(text) },
 
@@ -41,6 +46,10 @@ module.exports = {
         filenames.forEach((file) => {
             forEachFile(file);
         });
+    },
+
+    rgbToHex: function (r, g, b) {
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
     },
 
     loadConfig: function (configFile) {
