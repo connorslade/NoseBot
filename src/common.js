@@ -35,6 +35,14 @@ module.exports = {
         return fileName;
     },
 
+    getDirFiles: function (dir, forEachFile) {
+        let filenames = fs.readdirSync(dir);
+
+        filenames.forEach((file) => {
+            forEachFile(file);
+        });
+    },
+
     loadConfig: function (configFile) {
         fs.readFile(configFile, 'utf-8', (err, jsonString) => {
             global.config = JSON.parse(jsonString);

