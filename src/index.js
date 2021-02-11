@@ -1,4 +1,4 @@
-color = { "main": "#2fc290", "help": "#E8DD4D", "red":"#DB5953", "link":"#27E2E8", "nose":"#00EAFF", "minecraft":"#00FF6C", "Ball" : "#5AA2DE"};
+color = { "main": "#2fc290", "help": "#E8DD4D", "red":"#DB5953", "link":"#27E2E8", "nose":"#00EAFF", "minecraft":"#00FF6C", "Ball" : "#5AA2DE", "amongUs" : "#FFDF1E"};
 
 const Discord = require('discord.js');
 const common = require('./common.js');

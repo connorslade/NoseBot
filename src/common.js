@@ -35,18 +35,15 @@ module.exports = {
             + currentDate.getSeconds();
     },
 
-    base64ToPng: function (req, fileName) {
+    base64ToPng: function (req) {
         let base64Data = req.replace(/^data:image\/png;base64,/, "");
-        require("fs").writeFile(fileName, base64Data, 'base64', function () {});
-        return fileName;
+        sfbuffer = new Buffer.from(base64Data, "base64");
+        const finalattach = new Discord.MessageAttachment(sfbuffer);
+        return finalattach;
     },
 
-    getDirFiles: function (dir, forEachFile) {
-        let filenames = fs.readdirSync(dir);
-
-        filenames.forEach((file) => {
-            forEachFile(file);
-        });
+    localImgUploads: function (file, name) {
+        return new Discord.MessageAttachment(file, name);
     },
 
     rgbToHex: function (r, g, b) {

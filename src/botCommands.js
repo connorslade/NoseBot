@@ -33,7 +33,7 @@ module.exports = {
             process: function (msg, command) {
                 if (command.length > 1) {
                     let working = msg.content.split(commandPrefix + 'among-us ')[1];
-                    msg.channel.send(common.embedMessage("#FFDF1E", 'Among Us Code', 'Join Among Us now!\n**Code:** `' + working + '`').setThumbnail("https://i.imgur.com/wraEjgu.jpg").setFooter(common.getFormatDT()));
+                    msg.channel.send(common.embedMessage(color.amongUs, 'Among Us Code', 'Join Among Us now!\n**Code:** `' + working + '`').attachFiles(common.localImgUploads('./assets/amongUs.png', 'file.png')).setThumbnail("attachment://file.png").setFooter(common.getFormatDT()));
                 } else {
                     msg.channel.send(common.embedMessage(color.red, 'Error', 'No code Supplied\nUsage: `$among-us <code>`'));
                 }
@@ -92,7 +92,7 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Github', 'Sends you to the NoseBot Github\nUsage: `$github`'),
             "usage": 'github',
             process: function (msg, command) {
-                msg.channel.send(common.embedMessage(color.main, 'Github :octopus:', '**NoseBot**\nhttps://github.com/Basicprogrammer10/NoseBot').setThumbnail('https://i.imgur.com/7dEMK3N.png'));
+                msg.channel.send(common.embedMessage(color.main, 'Github :octopus:', '**NoseBot**\nhttps://github.com/Basicprogrammer10/NoseBot').attachFiles(common.localImgUploads('./assets/Github.png', 'file.png')).setThumbnail("attachment://file.png"));
             }
         },
         "help": {
@@ -127,7 +127,7 @@ module.exports = {
         "minecraft": {
             "help": common.embedMessage(color.help, 'Help: minecraft', 'Sends Minecraft Server Info\nUsage: `$minecraft <URL>`'),
             "usage": 'minecraft <URL>',
-            process: function (msg, command) {
+            process: async function (msg, command) {
                 if (command.length > 1) {
                     let working = msg.content.split(commandPrefix + 'minecraft ')[1];
                     https.get('https://api.mcsrvstat.us/2/' + working, (response) => {
@@ -138,12 +138,11 @@ module.exports = {
                         response.on('end', () => {
                             let jsonResponse = JSON.parse(todo);
                             if (jsonResponse.online){
-                                let text = `**URL:** \`${working}\`\n**MOTD:** \`${(jsonResponse['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponse['players']['online']}\`/\`${jsonResponse['players']['max']}\`\n**IP:** \`${jsonResponse['ip']}${(':'+jsonResponse['port']).replace(':25565','')}\``;
-                                const attachment = new Discord.MessageAttachment(common.base64ToPng(jsonResponse.icon, '.tmp.png'), 'tmp.png');
-                                msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(attachment).setThumbnail("attachment://tmp.png").setFooter(common.getFormatDT()));
+                                let text = `**MOTD:** \`${(jsonResponse['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponse['players']['online']}/${jsonResponse['players']['max']}\`\n**IP:** \`${jsonResponse['ip']}${(':'+jsonResponse['port']).replace(':25565','')}\``;
+                                msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(common.base64ToPng(jsonResponse.icon)).setThumbnail("attachment://file.jpg").setFooter(common.getFormatDT()));
                             }else {
                                 let text = `**URL:** \`${working}\`\n**OFFLINE**`;
-                                msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).setThumbnail("https://i.imgur.com/CT4tVWf.png").setFooter(common.getFormatDT()));
+                                msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(common.localImgUploads('./assets/pack.png', 'file.png')).setThumbnail("attachment://file.png").setFooter(common.getFormatDT()));
                             }
                         });
                     });
@@ -235,7 +234,7 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Version', 'Gives Version Info\nUsage: `$version`'),
             "usage": 'version',
             process: function (msg, command) {
-                msg.channel.send(common.embedMessage(color.main, "Version", 'Version: ' + version + '\n Created by **Sigma76**\nDiscord: Sigma#8214').setThumbnail('https://i.imgur.com/Fyv02Qd.png').setURL("https://github.com/Basicprogrammer10"));
+                msg.channel.send(common.embedMessage(color.main, "Version", 'Version: ' + version + '\n Created by **Sigma76**\nDiscord: Sigma#8214').attachFiles(common.localImgUploads('./assets/Sigma.png', 'file.png')).setThumbnail("attachment://file.png").setURL("https://github.com/Basicprogrammer10"));
             }
         },
         "eval": {
