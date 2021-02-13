@@ -19,7 +19,7 @@ module.exports = {
                     ['Reply hazy, try again', 'Ask again later', 'Better not tell you now', 'Cannot predict now', 'Concentrate and ask again']];
                 if (command.length > 1) {
                     let working = msg.content.split(commandPrefix + '8ball ')[1];
-                    let answer = Ball[Math.floor(common.randomFromSeed(working) * 3)];
+                    let answer = Ball[Math.floor(common.randomFromSeed(working.toLowerCase()) * 3)];
                     answer = answer[Math.floor(Math.random() * answer.length)];
                     msg.channel.send(common.embedMessage(color.Ball, '8Ball :8ball:', `**Question:** \`${working}\`\n**Response:** \`${answer}\``));
                 } else {
