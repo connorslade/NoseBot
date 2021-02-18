@@ -137,7 +137,7 @@ module.exports = {
 
                         response.on('end', () => {
                             let jsonResponse = JSON.parse(todo);
-                            if (jsonResponse.online){
+                            if (jsonResponse.online && jsonResponse.icon !== undefined){
                                 let text = `**MOTD:** \`${(jsonResponse['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponse['players']['online']}/${jsonResponse['players']['max']}\`\n**IP:** \`${jsonResponse['ip']}${(':'+jsonResponse['port']).replace(':25565','')}\``;
                                 msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(common.base64ToPng(jsonResponse.icon)).setThumbnail("attachment://file.jpg").setFooter(common.getFormatDT()));
                             }else {
