@@ -1,4 +1,4 @@
-const { magneticConstantDependencies, max, min } = require("mathjs");
+const {magneticConstantDependencies, max, min} = require("mathjs");
 const fs = require("fs");
 const https = require('https');
 const math = require('mathjs');
@@ -11,16 +11,16 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: 8Ball', 'Asks the 8Ball\nUsage: `$8ball <question>`'),
             "usage": '8ball <question>',
             process: function (msg, command) {
-                let Ball= [
+                let Ball = [
                     ['It is certain', 'It is decidedly so', 'Without a doubt', 'Yes – definitely', 'You may rely on it', 'As I see it, yes', 'Most likely', 'Outlook good', 'Yes', 'Signs point to yes'],
                     ['Don\'t count on it', 'My reply is no', 'My sources say no', 'Outlook not so good', 'Very doubtful'],
                     ['Reply hazy, try again', 'Ask again later', 'Better not tell you now', 'Cannot predict now', 'Concentrate and ask again']];
                 if (command.length > 1) {
                     let working = command.join(' ').toLowerCase().replace('8ball ', '');
                     let answer;
-                    if (Math.floor(Math.random() * (10 - 1) + 1) <= 4){
+                    if (Math.floor(Math.random() * (10 - 1) + 1) <= 4) {
                         answer = Ball[2];
-                    }else{
+                    } else {
                         answer = Ball[Math.floor(common.randomFromSeed(working.toLowerCase()) * 2)];
                     }
                     answer = answer[Math.floor(Math.random() * answer.length)];
@@ -60,8 +60,7 @@ module.exports = {
             process: function (msg, command) {
                 try {
                     msg.channel.send(common.embedMessage(color.main, 'Math', 'Input: `' + command[1] + '`\nResult: `' + math.evaluate(command[1]) + '`'));
-                }
-                catch (e) {
+                } catch (e) {
                     msg.channel.send(common.embedMessage(color.red, 'Error', e));
                 }
             }
@@ -81,14 +80,14 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: FOTD', 'Sends you a Random Fact! :grin:\nUsage: `$fotd`'),
             "usage": 'fotd',
             process: function (msg, command) {
-                function doCommand(){
+                function doCommand() {
                     let randomFact = Math.floor(Math.random() * (global.facts.length - 1) + 1);
                     msg.channel.send(common.embedMessage(color.main, `FOTD :factory: [${global.facts.length}]`, '**Fact of that day!!!**\n```' + global.facts[randomFact] + '```'));
                 }
 
-                if (typeof(global.facts) !== 'undefined' && global.facts) {
+                if (typeof (global.facts) !== 'undefined' && global.facts) {
                     doCommand();
-                }else {
+                } else {
                     global.facts = JSON.parse(fs.readFileSync('./assets/facts.json', 'utf8'));
                     doCommand();
                 }
@@ -130,7 +129,9 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Invite', 'Creates a invite for the server\nUsage: `$invite`'),
             "usage": 'invite',
             process: function (msg, command) {
-                msg.channel.createInvite({ unique: false }).then(invite => { msg.channel.send(common.embedMessage(color.main, 'Invite', "https://discord.gg/" + invite.code)) });
+                msg.channel.createInvite({unique: false}).then(invite => {
+                    msg.channel.send(common.embedMessage(color.main, 'Invite', "https://discord.gg/" + invite.code))
+                });
             }
         },
         "minecraft": {
@@ -142,16 +143,18 @@ module.exports = {
                     https.get('https://api.mcsrvstat.us/2/' + working, (response) => {
                         let todo = '';
 
-                        response.on('data', (chunk) => {todo += chunk;});
+                        response.on('data', (chunk) => {
+                            todo += chunk;
+                        });
 
                         response.on('end', () => {
                             let jsonResponse = JSON.parse(todo);
-                            if (jsonResponse.online && jsonResponse.icon !== undefined){
-                                let text = `**MOTD:** \`${(jsonResponse['motd']['clean'][0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponse['players']['online']}/${jsonResponse['players']['max']}\`\n**IP:** \`${jsonResponse['ip']}${(':'+jsonResponse['port']).replace(':25565','')}\``;
-                                msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(common.base64ToPng(jsonResponse.icon)).setThumbnail("attachment://file.jpg").setFooter(common.getFormatDT()));
-                            }else {
+                            if (jsonResponse.online && jsonResponse.icon !== undefined) {
+                                let text = `**MOTD:** \`${(jsonResponse['motd']['clean'][0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponse['players']['online']}/${jsonResponse['players']['max']}\`\n**IP:** \`${jsonResponse['ip']}${(':' + jsonResponse['port']).replace(':25565', '')}\``;
+                                msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/' + working).attachFiles(common.base64ToPng(jsonResponse.icon)).setThumbnail("attachment://file.jpg").setFooter(common.getFormatDT()));
+                            } else {
                                 let text = `**URL:** \`${working}\`\n**OFFLINE**`;
-                                msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(common.localImgUploads('./assets/pack.png', 'file.png')).setThumbnail("attachment://file.png").setFooter(common.getFormatDT()));
+                                msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/' + working).attachFiles(common.localImgUploads('./assets/pack.png', 'file.png')).setThumbnail("attachment://file.png").setFooter(common.getFormatDT()));
                             }
                         });
                     });
@@ -190,7 +193,7 @@ module.exports = {
                 }
             }
         },
-        "randomcolor" : {
+        "randomcolor": {
             "help": common.embedMessage(color.help, 'Help: Random Color', 'Generates random color!\nUsage: `$randomcolor`'),
             "usage": 'randomcolor',
             process: function (msg, command) {
@@ -222,21 +225,21 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: bash', 'Gives Information on Bash Commands\nUsage: `$bash [commandName]`'),
             "usage": 'bash [commandName]',
             process: function (msg, command) {
-                function doCommand(){
+                function doCommand() {
                     if (command.length === 1) {
                         msg.channel.send(common.embedMessage(color.red, "Unix Commands", "Use `$unix [commandName]` to get info on a UNIX command.\nAll commands from: https://wikipedia.org/wiki/List_of_Unix_commands"));
-                    } else if (unixCommands.hasOwnProperty(command[1].toLowerCase())){
+                    } else if (unixCommands.hasOwnProperty(command[1].toLowerCase())) {
                         let infoOnCommand = command[1].toLowerCase();
                         let commandInfo = unixCommands[infoOnCommand];
                         msg.channel.send(common.embedMessage(color.main, "Unix Command: `" + infoOnCommand + "`", `**${commandInfo.description}**\n\`\`\`Category: ${commandInfo.category}\nStatus: ${commandInfo.status}\`\`\``));
-                    }else{
+                    } else {
                         msg.channel.send(common.embedMessage(color.red, "Unknown Command...", "This is not a valid UNIX command...\nTry running `$unix` to see all unix commands!"));
                     }
                 }
 
-                if (typeof(global.unixCommands) !== 'undefined' && global.unixCommands) {
+                if (typeof (global.unixCommands) !== 'undefined' && global.unixCommands) {
                     doCommand();
-                }else {
+                } else {
                     global.unixCommands = JSON.parse(fs.readFileSync('./assets/unixCommands.json', 'utf8'));
                     doCommand();
                 }
@@ -257,10 +260,9 @@ module.exports = {
                 if (command.length === 3) {
                     msg.channel.send(common.embedMessage(color.link, 'Render x' + command[1] + ' z' + command[2] + '[overworld-isometric]', 'https://elite-anarchy.connorcode.com/#overworld-isometric/0/4/' + command[1] + '/' + command[2] + '/64'))
                 } else if (command.length === 4) {
-                    dimID = { 0: 'overworld-isometric', 1: 'end-isometric' };
+                    dimID = {0: 'overworld-isometric', 1: 'end-isometric'};
                     msg.channel.send(common.embedMessage(color.link, 'Render x' + command[1] + ' z' + command[2] + ' [' + dimID[Number(command[3])] + ']', 'https://elite-anarchy.connorcode.com/#' + dimID[Number(command[3])] + '/0/6/' + command[1] + '/' + command[2] + '/64'))
-                }
-                else {
+                } else {
                     msg.channel.send(common.embedMessage(color.link, 'Render x0 z0', 'https://elite-anarchy.connorcode.com/#overworld-isometric/0/4/0/0/64'))
                 }
             }
