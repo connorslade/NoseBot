@@ -40,12 +40,12 @@ module.exports = {
             }
         },
         "unix": {
-            "help": common.embedMessage(color.help, 'Help: bash', 'Gives Information on Bash Commands\nUsage: `$bash <commandName>`'),
-            "usage": 'bash <commandName>',
+            "help": common.embedMessage(color.help, 'Help: bash', 'Gives Information on Bash Commands\nUsage: `$bash [commandName]`'),
+            "usage": 'bash [commandName]',
             process: function (msg, command) {
                 function doCommand(){
                     if (command.length === 1) {
-                        msg.channel.send(common.embedMessage(color.red, "Unix Commands", "Use `$unix <commandName>` to get info on a UNIX command.\nAll commands from: https://wikipedia.org/wiki/List_of_Unix_commands"));
+                        msg.channel.send(common.embedMessage(color.red, "Unix Commands", "Use `$unix [commandName]` to get info on a UNIX command.\nAll commands from: https://wikipedia.org/wiki/List_of_Unix_commands"));
                     } else if (unixCommands.hasOwnProperty(command[1].toLowerCase())){
                         let infoOnCommand = command[1].toLowerCase();
                         let commandInfo = unixCommands[infoOnCommand];
