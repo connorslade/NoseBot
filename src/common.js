@@ -37,9 +37,8 @@ module.exports = {
 
     base64ToPng: function (req) {
         let base64Data = req.replace(/^data:image\/png;base64,/, "");
-        sfbuffer = new Buffer.from(base64Data, "base64");
-        const finalattach = new Discord.MessageAttachment(sfbuffer);
-        return finalattach;
+        let Buffer = new Buffer.from(base64Data, "base64");
+        return new Discord.MessageAttachment(Buffer);
     },
 
     localImgUploads: function (file, name) {
