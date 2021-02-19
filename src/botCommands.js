@@ -22,7 +22,6 @@ module.exports = {
                     let answer;
                     if (Math.floor(Math.random() * (10 - 1) + 1) <= 4){
                         answer = Ball[2];
-                        msg.channel.send(common.embedMessage(color.main, "NOW",""))
                     }else{
                         answer = Ball[Math.floor(common.randomFromSeed(working.toLowerCase()) * 2)];
                     }
