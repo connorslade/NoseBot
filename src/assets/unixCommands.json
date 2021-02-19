@@ -1,0 +1,802 @@
+{
+  "admin": {
+    "category": "SCCS",
+    "status": "Optional (XSI)",
+    "description": "Create and administer SCCS files"
+  },
+  "alias": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Define or display aliases"
+  },
+  "ar": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Create and maintain library archives"
+  },
+  "asa": {
+    "category": "Text processing",
+    "status": "Optional (FR)",
+    "description": "Interpret carriage-control characters"
+  },
+  "at": {
+    "category": "Process management",
+    "status": "Mandatory",
+    "description": "Execute commands at a later time"
+  },
+  "awk": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Pattern scanning and processing language"
+  },
+  "basename": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Return non-directory portion of a pathname; see also dirname"
+  },
+  "batch": {
+    "category": "Process management",
+    "status": "Mandatory",
+    "description": "Schedule commands to be executed in a batch queue"
+  },
+  "bc": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Arbitrary-precision arithmetic language"
+  },
+  "bg": {
+    "category": "Process management",
+    "status": "Optional (UP)",
+    "description": "Run jobs in the background"
+  },
+  "cc": {
+    "category": "C programming",
+    "status": "Optional (CD)",
+    "description": "Compile standard C programs"
+  },
+  "cal": {
+    "category": "Misc",
+    "status": "Optional (XSI)",
+    "description": "Print a calendar"
+  },
+  "cat": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Concatenate and print files"
+  },
+  "cd": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Change the working directory"
+  },
+  "cflow": {
+    "category": "C programming",
+    "status": "Optional (XSI)",
+    "description": "Generate a C-language call graph"
+  },
+  "chgrp": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Change the file group ownership"
+  },
+  "chmod": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Change the file modes/attributes/permissions"
+  },
+  "chown": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Change the file ownership"
+  },
+  "cksum": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Write file checksums and sizes"
+  },
+  "cmp": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Compare two files; see also diff"
+  },
+  "comm": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Select or reject lines common to two files"
+  },
+  "command": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Execute a simple command"
+  },
+  "compress": {
+    "category": "Filesystem",
+    "status": "Optional (XSI)",
+    "description": "Compress data"
+  },
+  "cp": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Copy files"
+  },
+  "crontab": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Schedule periodic background work"
+  },
+  "csplit": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Split files based on context"
+  },
+  "ctags": {
+    "category": "C programming",
+    "status": "Optional (SD)",
+    "description": "Create a tags file"
+  },
+  "cut": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Cut out selected fields of each line of a file"
+  },
+  "cxref": {
+    "category": "C programming",
+    "status": "Optional (XSI)",
+    "description": "Generate a C-language program cross-reference table"
+  },
+  "date": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Display the date and time"
+  },
+  "dd": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Convert and copy a file"
+  },
+  "delta": {
+    "category": "SCCS",
+    "status": "Optional (XSI)",
+    "description": "Make a delta (change) to an SCCS file"
+  },
+  "df": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Report free disk space"
+  },
+  "diff": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Compare two files; see also cmp"
+  },
+  "dirname": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Return the directory portion of a pathname; see also basename"
+  },
+  "du": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Estimate file space usage"
+  },
+  "echo": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Write arguments to standard output"
+  },
+  "ed": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "The standard text editor"
+  },
+  "env": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Set the environment for command invocation"
+  },
+  "ex": {
+    "category": "Text processing",
+    "status": "Optional (XSI)",
+    "description": "Text editor"
+  },
+  "expand": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Convert tabs to spaces"
+  },
+  "expr": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Evaluate arguments as an expression"
+  },
+  "false": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Return false value"
+  },
+  "fc": {
+    "category": "Misc",
+    "status": "Optional (UP)",
+    "description": "Process the command history list"
+  },
+  "fg": {
+    "category": "Process management",
+    "status": "Optional (UP)",
+    "description": "Run jobs in the foreground"
+  },
+  "file": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Determine file type"
+  },
+  "find": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Find files"
+  },
+  "fold": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Filter for folding lines"
+  },
+  "fort77": {
+    "category": "FORTRAN77 programming",
+    "status": "Obsolescent (FD)",
+    "description": "FORTRAN compiler"
+  },
+  "fuser": {
+    "category": "Process management",
+    "status": "Optional (XSI)",
+    "description": "List process IDs of all processes that have one or more files open"
+  },
+  "gencat": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Generate a formatted message catalog"
+  },
+  "get": {
+    "category": "SCCS",
+    "status": "Optional (XSI)",
+    "description": "Get a version of an SCCS file"
+  },
+  "getconf": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Get configuration values"
+  },
+  "getopts": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Parse utility options"
+  },
+  "grep": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Search text for a pattern"
+  },
+  "hash": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Hash database access method"
+  },
+  "head": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Copy the first part of files"
+  },
+  "iconv": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Codeset conversion"
+  },
+  "id": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Return user identity"
+  },
+  "ipcrm": {
+    "category": "Misc",
+    "status": "Optional (XSI)",
+    "description": "Remove a message queue, semaphore set, or shared memory segment identifier"
+  },
+  "ipcs": {
+    "category": "Misc",
+    "status": "Optional (XSI)",
+    "description": "Report interprocess communication facilities status"
+  },
+  "jobs": {
+    "category": "Process management",
+    "status": "Optional (UP)",
+    "description": "Display status of jobs in the current session"
+  },
+  "join": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Merges two sorted text files based on the presence of a common field"
+  },
+  "kill": {
+    "category": "Process management",
+    "status": "Mandatory",
+    "description": "Terminate or signal processes"
+  },
+  "lex": {
+    "category": "C programming",
+    "status": "Optional (CD)",
+    "description": "Generate programs for lexical tasks"
+  },
+  "link": {
+    "category": "Filesystem",
+    "status": "Optional (XSI)",
+    "description": "Create a hard link to a file"
+  },
+  "ln": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Link files"
+  },
+  "locale": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Get locale-specific information"
+  },
+  "localedef": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Define locale environment"
+  },
+  "logger": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Log messages"
+  },
+  "logname": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Return the user's login name"
+  },
+  "lp": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Send files to a printer"
+  },
+  "ls": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "List directory contents"
+  },
+  "m4": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Macro processor"
+  },
+  "mailx": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Process messages"
+  },
+  "make": {
+    "category": "Programming",
+    "status": "Optional (SD)",
+    "description": "Maintain, update, and regenerate groups of programs"
+  },
+  "man": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Display system documentation"
+  },
+  "mesg": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Permit or deny messages"
+  },
+  "mkdir": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Make directories"
+  },
+  "mkfifo": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Make FIFO special files"
+  },
+  "more": {
+    "category": "Text processing",
+    "status": "Optional (UP)",
+    "description": "Display files on a page-by-page basis"
+  },
+  "mv": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Move or rename files"
+  },
+  "newgrp": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Change to a new group"
+  },
+  "nice": {
+    "category": "Process management",
+    "status": "Mandatory",
+    "description": "Invoke a utility with an altered nice value"
+  },
+  "nl": {
+    "category": "Text processing",
+    "status": "Optional (XSI)",
+    "description": "Line numbering filter"
+  },
+  "nm": {
+    "category": "C programming",
+    "status": "Optional (SD, XSI)",
+    "description": "Write the name list of an object file"
+  },
+  "nohup": {
+    "category": "Process management",
+    "status": "Mandatory",
+    "description": "Invoke a utility immune to hangups"
+  },
+  "od": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Dump files in various formats"
+  },
+  "paste": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Merge corresponding or subsequent lines of files"
+  },
+  "patch": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Apply changes to files"
+  },
+  "pathchk": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Check pathnames"
+  },
+  "pax": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Portable archive interchange"
+  },
+  "pr": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Print files"
+  },
+  "printf": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Write formatted output"
+  },
+  "prs": {
+    "category": "SCCS",
+    "status": "Optional (XSI)",
+    "description": "Print an SCCS file"
+  },
+  "ps": {
+    "category": "Process management",
+    "status": "Mandatory",
+    "description": "Report process status"
+  },
+  "pwd": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Print working directory"
+  },
+  "qalter": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Alter batch job"
+  },
+  "qdel": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Delete batch jobs"
+  },
+  "qhold": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Hold batch jobs"
+  },
+  "qmove": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Move batch jobs"
+  },
+  "qmsg": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Send message to batch jobs"
+  },
+  "qrerun": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Rerun batch jobs"
+  },
+  "qrls": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Release batch jobs"
+  },
+  "qselect": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Select batch jobs"
+  },
+  "qsig": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Signal batch jobs"
+  },
+  "qstat": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Show status of batch jobs"
+  },
+  "qsub": {
+    "category": "Batch utilities",
+    "status": "Obsolescent (BE)",
+    "description": "Submit a script"
+  },
+  "read": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Read a line from standard input"
+  },
+  "renice": {
+    "category": "Process management",
+    "status": "Mandatory",
+    "description": "Set nice values of running processes"
+  },
+  "rm": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Remove directory entries"
+  },
+  "rmdel": {
+    "category": "SCCS",
+    "status": "Optional (XSI)",
+    "description": "Remove a delta from an SCCS file"
+  },
+  "rmdir": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Remove directories, if they are empty."
+  },
+  "sact": {
+    "category": "SCCS",
+    "status": "Optional (XSI)",
+    "description": "Print current SCCS file-editing activity"
+  },
+  "sccs": {
+    "category": "SCCS",
+    "status": "Optional (XSI)",
+    "description": "Front end for the SCCS subsystem"
+  },
+  "sed": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Stream editor"
+  },
+  "sh": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Shell, the standard command language interpreter"
+  },
+  "sleep": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Suspend execution for an interval"
+  },
+  "sort": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Sort, merge, or sequence check text files"
+  },
+  "split": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Split files into pieces"
+  },
+  "strings": {
+    "category": "C programming",
+    "status": "Mandatory",
+    "description": "Find printable strings in files"
+  },
+  "strip": {
+    "category": "C programming",
+    "status": "Optional (SD)",
+    "description": "Remove unnecessary information from executable files"
+  },
+  "stty": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Set the options for a terminal"
+  },
+  "tabs": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Set terminal tabs"
+  },
+  "tail": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Copy the last part of a file"
+  },
+  "talk": {
+    "category": "Misc",
+    "status": "Optional (UP)",
+    "description": "Talk to another user"
+  },
+  "tee": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Duplicate the standard output"
+  },
+  "test": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Evaluate expression"
+  },
+  "time": {
+    "category": "Process management",
+    "status": "Mandatory",
+    "description": "Time a simple command"
+  },
+  "touch": {
+    "category": "Filesystem",
+    "status": "Mandatory",
+    "description": "Change file access and modification times"
+  },
+  "tput": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Change terminal characteristics"
+  },
+  "tr": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Translate characters"
+  },
+  "true": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Return true value"
+  },
+  "tsort": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Topological sort"
+  },
+  "tty": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Return user's terminal name"
+  },
+  "type": {
+    "category": "Misc",
+    "status": "Optional (XSI)",
+    "description": "Displays how a name would be interpreted if used as a command"
+  },
+  "ulimit": {
+    "category": "Misc",
+    "status": "Optional (XSI)",
+    "description": "Set or report file size limit"
+  },
+  "umask": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Get or set the file mode creation mask"
+  },
+  "unalias": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Remove alias definitions"
+  },
+  "uname": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Return system name"
+  },
+  "uncompress": {
+    "category": "Misc",
+    "status": "Optional (XSI)",
+    "description": "Expand compressed data"
+  },
+  "unexpand": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Convert spaces to tabs"
+  },
+  "unget": {
+    "category": "SCCS",
+    "status": "Optional (XSI)",
+    "description": "Undo a previous get of an SCCS file"
+  },
+  "uniq": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Report or filter out repeated lines in a file"
+  },
+  "unlink": {
+    "category": "Filesystem",
+    "status": "Optional (XSI)",
+    "description": "Call the unlink function"
+  },
+  "uucp": {
+    "category": "Network",
+    "status": "Optional (UU)",
+    "description": "System-to-system copy"
+  },
+  "uudecode": {
+    "category": "Network",
+    "status": "Mandatory",
+    "description": "Decode a binary file"
+  },
+  "uuencode": {
+    "category": "Network",
+    "status": "Mandatory",
+    "description": "Encode a binary file"
+  },
+  "uustat": {
+    "category": "Network",
+    "status": "Optional (UU)",
+    "description": "uucp status inquiry and job control"
+  },
+  "uux": {
+    "category": "Process management",
+    "status": "Optional (UU)",
+    "description": "Remote command execution"
+  },
+  "val": {
+    "category": "SCCS",
+    "status": "Optional (XSI)",
+    "description": "Validate SCCS files"
+  },
+  "vi": {
+    "category": "Text processing",
+    "status": "Optional (UP)",
+    "description": "Screen-oriented (visual) display editor"
+  },
+  "wait": {
+    "category": "Process management",
+    "status": "Mandatory",
+    "description": "Await process completion"
+  },
+  "wc": {
+    "category": "Text processing",
+    "status": "Mandatory",
+    "description": "Line, word and byte or character count"
+  },
+  "what": {
+    "category": "SCCS",
+    "status": "Optional (XSI)",
+    "description": "Identify SCCS files"
+  },
+  "who": {
+    "category": "System administration",
+    "status": "Mandatory",
+    "description": "Display who is on the system"
+  },
+  "write": {
+    "category": "Misc",
+    "status": "Mandatory",
+    "description": "Write to another user's terminal"
+  },
+  "xargs": {
+    "category": "Shell programming",
+    "status": "Mandatory",
+    "description": "Construct argument lists and invoke utility"
+  },
+  "yacc": {
+    "category": "C programming",
+    "status": "Optional (CD)",
+    "description": "Yet another compiler compiler"
+  },
+  "zcat": {
+    "category": "Text processing",
+    "status": "Optional (XSI)",
+    "description": "Expand and concatenate data"
+  }
+}

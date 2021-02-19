@@ -39,10 +39,21 @@ module.exports = {
                 }
             }
         },
-        "bash": {
+        "unix": {
             "help": common.embedMessage(color.help, 'Help: bash', 'Gives Information on Bash Commands\nUsage: `$bash <commandName>`'),
             "usage": 'bash <commandName>',
             process: function (msg, command) {
+                if (typeof(global.unixCommands) !== 'undefined' && global.unixCommands) {
+                    if (command.length === 1) {
+                        msg.channel.send(common.embedMessage(color.red, "PLACEHOLDER", "IM TOO LAZY TO DO THIS PART YET LOL"));//TODO:MAKE THIS SO STUFF
+                    } else if (unixCommands.hasOwnProperty(command[1].toLowerCase())){
+                        let infoOnCommand = command[1].toLowerCase();
+                        msg.channel.send(common.embedMessage(color.main, "Unix Command: `" + infoOnCommand + "`", unixCommands[infoOnCommand].description));//TODO:CLEAN UP
+                    }
+                }else {
+                    global.unixCommands = JSON.parse(fs.readFileSync('./assets/unixCommands.json', 'utf8'));
+                    msg.channel.send(common.embedMessage(color.main, "Commands Loaded", ""))//TODO:REMOVE THIS
+                }
             }
         },
         "bugreport": {
