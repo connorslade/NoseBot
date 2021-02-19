@@ -82,7 +82,7 @@ module.exports = {
             process: function (msg, command) {
                 function doCommand() {
                     let randomFact = Math.floor(Math.random() * (global.facts.length - 1) + 1);
-                    msg.channel.send(common.embedMessage(color.main, `FOTD :factory: [${global.facts.length}]`, '**Fact of that day!!!**\n```' + global.facts[randomFact] + '```'));
+                    msg.channel.send(common.embedMessage(color.main, `FOTD :factory: [${randomFact}]`, '**Fact of that day!!!**\n```' + global.facts[randomFact] + '```'));
                 }
 
                 if (typeof (global.facts) !== 'undefined' && global.facts) {
@@ -222,8 +222,8 @@ module.exports = {
             }
         },
         "unix": {
-            "help": common.embedMessage(color.help, 'Help: bash', 'Gives Information on Bash Commands\nUsage: `$bash [commandName]`'),
-            "usage": 'bash [commandName]',
+            "help": common.embedMessage(color.help, 'Help: unix', 'Gives Information on unix Commands\nUsage: `$unix [commandName]`'),
+            "usage": 'unix [commandName]',
             process: function (msg, command) {
                 function doCommand() {
                     if (command.length === 1) {
