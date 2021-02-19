@@ -4,7 +4,7 @@ const https = require('https');
 const math = require('mathjs');
 
 const common = require('./common.js');
-
+//TODO: Command Ideas = ["Random Word"]
 module.exports = {
     "commands": {
         "8ball": {
@@ -39,30 +39,6 @@ module.exports = {
                     msg.channel.send(common.embedMessage(color.amongUs, 'Among Us Code', 'Join Among Us now!\n**Code:** `' + working + '`').attachFiles(common.localImgUploads('./assets/amongUs.png', 'file.png')).setThumbnail("attachment://file.png").setFooter(common.getFormatDT()));
                 } else {
                     msg.channel.send(common.embedMessage(color.red, 'Error', 'No code Supplied\nUsage: `$among-us <code>`'));
-                }
-            }
-        },
-        "unix": {
-            "help": common.embedMessage(color.help, 'Help: bash', 'Gives Information on Bash Commands\nUsage: `$bash [commandName]`'),
-            "usage": 'bash [commandName]',
-            process: function (msg, command) {
-                function doCommand(){
-                    if (command.length === 1) {
-                        msg.channel.send(common.embedMessage(color.red, "Unix Commands", "Use `$unix [commandName]` to get info on a UNIX command.\nAll commands from: https://wikipedia.org/wiki/List_of_Unix_commands"));
-                    } else if (unixCommands.hasOwnProperty(command[1].toLowerCase())){
-                        let infoOnCommand = command[1].toLowerCase();
-                        let commandInfo = unixCommands[infoOnCommand];
-                        msg.channel.send(common.embedMessage(color.main, "Unix Command: `" + infoOnCommand + "`", `**${commandInfo.description}**\n\`\`\`Category: ${commandInfo.category}\nStatus: ${commandInfo.status}\`\`\``));
-                    }else{
-                        msg.channel.send(common.embedMessage(color.red, "Unknown Command...", "This is not a valid UNIX command...\nTry running `$unix` to see all unix commands!"));
-                    }
-                }
-
-                if (typeof(global.unixCommands) !== 'undefined' && global.unixCommands) {
-                    doCommand();
-                }else {
-                    global.unixCommands = JSON.parse(fs.readFileSync('./assets/unixCommands.json', 'utf8'));
-                    doCommand();
                 }
             }
         },
@@ -101,18 +77,21 @@ module.exports = {
                 }
             }
         },
-        "fotd": { //TODO:Use Local Facts
+        "fotd": {
             "help": common.embedMessage(color.help, 'Help: FOTD', 'Sends you a Random Fact! :grin:\nUsage: `$fotd`'),
             "usage": 'fotd',
             process: function (msg, command) {
-                https.get('https://uselessfacts.jsph.pl/random.json?language=en', (response) => {
-                let todo = '';
+                function doCommand(){
+                    let randomFact = Math.floor(Math.random() * (global.facts.length - 1) + 1);
+                    msg.channel.send(common.embedMessage(color.main, `FOTD :factory: [${global.facts.length}]`, '**Fact of that day!!!**\n```' + global.facts[randomFact] + '```'));
+                }
 
-                response.on('data', (chunk) => {todo += chunk;});
-
-                response.on('end', () => {msg.channel.send(common.embedMessage(color.main, 'FOTD :factory:', '**Fact of that day!!!**\n```' + JSON.parse(todo)['text'] + '```').setURL(JSON.parse(todo)['permalink']));});
-
-                });
+                if (typeof(global.facts) !== 'undefined' && global.facts) {
+                    doCommand();
+                }else {
+                    global.facts = JSON.parse(fs.readFileSync('./assets/facts.json', 'utf8'));
+                    doCommand();
+                }
             }
         },
         "github": {
@@ -236,6 +215,30 @@ module.exports = {
                     }
                 } else {
                     msg.channel.send(common.embedMessage(color.red, 'Error', 'No text Supplied'));
+                }
+            }
+        },
+        "unix": {
+            "help": common.embedMessage(color.help, 'Help: bash', 'Gives Information on Bash Commands\nUsage: `$bash [commandName]`'),
+            "usage": 'bash [commandName]',
+            process: function (msg, command) {
+                function doCommand(){
+                    if (command.length === 1) {
+                        msg.channel.send(common.embedMessage(color.red, "Unix Commands", "Use `$unix [commandName]` to get info on a UNIX command.\nAll commands from: https://wikipedia.org/wiki/List_of_Unix_commands"));
+                    } else if (unixCommands.hasOwnProperty(command[1].toLowerCase())){
+                        let infoOnCommand = command[1].toLowerCase();
+                        let commandInfo = unixCommands[infoOnCommand];
+                        msg.channel.send(common.embedMessage(color.main, "Unix Command: `" + infoOnCommand + "`", `**${commandInfo.description}**\n\`\`\`Category: ${commandInfo.category}\nStatus: ${commandInfo.status}\`\`\``));
+                    }else{
+                        msg.channel.send(common.embedMessage(color.red, "Unknown Command...", "This is not a valid UNIX command...\nTry running `$unix` to see all unix commands!"));
+                    }
+                }
+
+                if (typeof(global.unixCommands) !== 'undefined' && global.unixCommands) {
+                    doCommand();
+                }else {
+                    global.unixCommands = JSON.parse(fs.readFileSync('./assets/unixCommands.json', 'utf8'));
+                    doCommand();
                 }
             }
         },
