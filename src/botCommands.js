@@ -39,6 +39,12 @@ module.exports = {
                 }
             }
         },
+        "bash": {
+            "help": common.embedMessage(color.help, 'Help: bash', 'Gives Information on Bash Commands\nUsage: `$bash <commandName>`'),
+            "usage": 'bash <commandName>',
+            process: function (msg, command) {
+            }
+        },
         "bugreport": {
             "help": common.embedMessage(color.help, 'Help: Bugreport', 'Reports a Bug\nUsage: `$bugreport <text>`'),
             "usage": 'bugreport <text>',
