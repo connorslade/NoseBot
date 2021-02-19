@@ -1,11 +1,9 @@
 const { magneticConstantDependencies, max, min } = require("mathjs");
-const common = require('./common.js');
-
-const Discord = require("discord.js");
 const fs = require("fs");
-
 const https = require('https');
 const math = require('mathjs');
+
+const common = require('./common.js');
 
 module.exports = {
     "commands": {
@@ -18,7 +16,7 @@ module.exports = {
                     ['Don\'t count on it', 'My reply is no', 'My sources say no', 'Outlook not so good', 'Very doubtful'],
                     ['Reply hazy, try again', 'Ask again later', 'Better not tell you now', 'Cannot predict now', 'Concentrate and ask again']];
                 if (command.length > 1) {
-                    let working = msg.content.split(commandPrefix + '8ball ')[1];
+                    let working = command.join(' ').toLowerCase().replace('8ball ', '');
                     let answer;
                     if (Math.floor(Math.random() * (10 - 1) + 1) <= 4){
                         answer = Ball[2];
@@ -37,7 +35,7 @@ module.exports = {
             "usage": 'among-us <code>',
             process: function (msg, command) {
                 if (command.length > 1) {
-                    let working = msg.content.split(commandPrefix + 'among-us ')[1];
+                    let working = command.join(' ').toLowerCase().replace('among-us ', '');
                     msg.channel.send(common.embedMessage(color.amongUs, 'Among Us Code', 'Join Among Us now!\n**Code:** `' + working + '`').attachFiles(common.localImgUploads('./assets/amongUs.png', 'file.png')).setThumbnail("attachment://file.png").setFooter(common.getFormatDT()));
                 } else {
                     msg.channel.send(common.embedMessage(color.red, 'Error', 'No code Supplied\nUsage: `$among-us <code>`'));
@@ -73,7 +71,7 @@ module.exports = {
             "usage": 'bugreport <text>',
             process: function (msg, command) {
                 if (command.length > 1) {
-                    let working = msg.content.split(commandPrefix + 'bugreport ')[1];
+                    let working = command.join(' ').toLowerCase().replace('bugreport ', '');
                     msg.channel.send(common.embedMessage(color.main, 'Bugreport :bug:', 'Bug has been Reported!\n`' + working + '`'));
                 } else {
                     msg.channel.send(common.embedMessage(color.red, 'Error', 'No text Supplied'));
@@ -103,7 +101,7 @@ module.exports = {
                 }
             }
         },
-        "fotd": {
+        "fotd": { //TODO:Use Local Facts
             "help": common.embedMessage(color.help, 'Help: FOTD', 'Sends you a Random Fact! :grin:\nUsage: `$fotd`'),
             "usage": 'fotd',
             process: function (msg, command) {
@@ -128,14 +126,17 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Help', 'No explanation Needed...\nUsage: `$help [command]`'),
             "usage": 'help [command]',
             process: function (msg, command) {
+                let working;
+                let numCommands;
                 if (command.length > 1) {
-                    try { msg.channel.send(module.exports.commands[command[1].toLowerCase()].help); }
-                    catch { }
-                }
-                else {
+                    try {
+                        msg.channel.send(module.exports.commands[command[1].toLowerCase()].help);
+                    } catch {
+                    }
+                } else {
                     working = '```\n';
                     numCommands = 0;
-                    for (i in Object.keys(module.exports.commands)) {
+                    for (let i in Object.keys(module.exports.commands)) {
                         if (module.exports.commands[Object.keys(module.exports.commands)[i]]['usage'] !== undefined) {
                             working += commandPrefix + module.exports.commands[Object.keys(module.exports.commands)[i]]['usage'] + '\n'
                             numCommands += 1;
@@ -167,7 +168,7 @@ module.exports = {
                         response.on('end', () => {
                             let jsonResponse = JSON.parse(todo);
                             if (jsonResponse.online && jsonResponse.icon !== undefined){
-                                let text = `**MOTD:** \`${(jsonResponse['motd'].clean[0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponse['players']['online']}/${jsonResponse['players']['max']}\`\n**IP:** \`${jsonResponse['ip']}${(':'+jsonResponse['port']).replace(':25565','')}\``;
+                                let text = `**MOTD:** \`${(jsonResponse['motd']['clean'][0]).replace(/\s+/g, ' ')}\`\n**Online:** \`${jsonResponse['players']['online']}/${jsonResponse['players']['max']}\`\n**IP:** \`${jsonResponse['ip']}${(':'+jsonResponse['port']).replace(':25565','')}\``;
                                 msg.channel.send(common.embedMessage(color.minecraft, 'Minecraft Server :video_game: ' + working, text).setURL('https://mcsrvstat.us/server/'+working).attachFiles(common.base64ToPng(jsonResponse.icon)).setThumbnail("attachment://file.jpg").setFooter(common.getFormatDT()));
                             }else {
                                 let text = `**URL:** \`${working}\`\n**OFFLINE**`;
@@ -185,8 +186,8 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Nose', 'Noses You!\nUsage: `$nose`'),
             "usage": 'nose',
             process: function (msg, command) {
-                x = Math.floor((Math.random() * 89) + 1);
-                noseUrl = 'https://connorcode.com/Main_Assets/Noses/' + x + '.jpg'
+                let x = Math.floor((Math.random() * 89) + 1);
+                let noseUrl = 'https://connorcode.com/Main_Assets/Noses/' + x + '.jpg'
                 msg.channel.send(common.embedMessage(color.nose, "Nose! :dog:", "").setImage(noseUrl));
             }
         },
@@ -222,6 +223,7 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Say', 'Says Stuff\nUsage: `$say <text>`'),
             "usage": 'say <text>',
             process: function (msg, command) {
+                let working;
                 if (command.length > 1) {
                     working = '';
                     for (let i = 1; i < command.length; i++) {
@@ -248,6 +250,7 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Render', 'Gives link to render of cords\nUsage: `$render <x> <z> [DimensionID]`\n0 - Overworld  |  1 - End'),
             "usage": 'render <x> <z> [DimensionID]',
             process: function (msg, command) {
+                let dimID;
                 if (command.length === 3) {
                     msg.channel.send(common.embedMessage(color.link, 'Render x' + command[1] + ' z' + command[2] + '[overworld-isometric]', 'https://elite-anarchy.connorcode.com/#overworld-isometric/0/4/' + command[1] + '/' + command[2] + '/64'))
                 } else if (command.length === 4) {
@@ -269,12 +272,9 @@ module.exports = {
         "eval": {
             "help": common.embedMessage(color.help, 'Help: Eval', 'Hidden Command for Kool Peeps only (AKA not you)'),
             process: function (msg, command) {
-                if (msg.author.id === config.adminId || msg.author.id === "466967710685855744") {
-                    let working = '';
-                    for (i in command) {
-                        working = working + command[i] + ' '
-                    }
-                    working = working.split('eval ')[1].slice(0, -1);
+                if (msg.author.id === config['adminId'] || msg.author.id === "466967710685855744") {
+                    let working = command.join(' ');
+                    working = working.split('eval ')[1];
                     try {
                         msg.channel.send(common.embedMessage(color.main, "Eval", 'Code: `' + working + '`\n' + eval(working)));
                     } catch (e) {

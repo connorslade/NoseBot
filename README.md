@@ -12,14 +12,13 @@
 
   <h3 align="center">NoseBot</h3>
 
-  <p align="center">
+<p align="center">
     The most Nosetastic Discord bot ever!
     <br />
     <br />
     <a href="https://github.com/Basicprogrammer10/WindowOnTop/issues">Report Bug</a>
     ·
     <a href="https://github.com/Basicprogrammer10/WindowOnTop/issues">Request Feature</a>
-  </p>
 </p>
 
 
@@ -51,7 +50,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Screen Shot](https://i.imgur.com/ryRgBT7.png)](https://github.com/Basicprogrammer10/NoseBot)
+[![Screen Shot](https://i.imgur.com/n66qoiU.png)](https://github.com/Basicprogrammer10/NoseBot)
 
 The Main GUI...
 

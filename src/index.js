@@ -8,7 +8,7 @@ global.client = new Discord.Client();
 
 client.on('ready', () => {
     console.log("\033[32mLogged in as \033[36m" + client.user.tag + "\033[0m");
-    client.user.setActivity(config.activity).then(r => {});
+    client.user.setActivity(config.activity).then(() => {});
 });
 
 client.on("message", async (msg) => {
