@@ -19,7 +19,13 @@ module.exports = {
                     ['Reply hazy, try again', 'Ask again later', 'Better not tell you now', 'Cannot predict now', 'Concentrate and ask again']];
                 if (command.length > 1) {
                     let working = msg.content.split(commandPrefix + '8ball ')[1];
-                    let answer = Ball[Math.floor(common.randomFromSeed(working.toLowerCase()) * 3)];
+                    let answer;
+                    if (Math.floor(Math.random() * (10 - 1) + 1) <= 4){
+                        answer = Ball[2];
+                        msg.channel.send(common.embedMessage(color.main, "NOW",""))
+                    }else{
+                        answer = Ball[Math.floor(common.randomFromSeed(working.toLowerCase()) * 2)];
+                    }
                     answer = answer[Math.floor(Math.random() * answer.length)];
                     msg.channel.send(common.embedMessage(color.Ball, '8Ball :8ball:', `**Question:** \`${working}\`\n**Response:** \`${answer}\``));
                 } else {
@@ -40,12 +46,12 @@ module.exports = {
             }
         },
         "unix": {
-            "help": common.embedMessage(color.help, 'Help: bash', 'Gives Information on Bash Commands\nUsage: `$bash <commandName>`'),
-            "usage": 'bash <commandName>',
+            "help": common.embedMessage(color.help, 'Help: bash', 'Gives Information on Bash Commands\nUsage: `$bash [commandName]`'),
+            "usage": 'bash [commandName]',
             process: function (msg, command) {
                 function doCommand(){
                     if (command.length === 1) {
-                        msg.channel.send(common.embedMessage(color.red, "Unix Commands", "Use `$unix <commandName>` to get info on a UNIX command.\nAll commands from: https://wikipedia.org/wiki/List_of_Unix_commands"));
+                        msg.channel.send(common.embedMessage(color.red, "Unix Commands", "Use `$unix [commandName]` to get info on a UNIX command.\nAll commands from: https://wikipedia.org/wiki/List_of_Unix_commands"));
                     } else if (unixCommands.hasOwnProperty(command[1].toLowerCase())){
                         let infoOnCommand = command[1].toLowerCase();
                         let commandInfo = unixCommands[infoOnCommand];
