@@ -206,7 +206,7 @@ module.exports = {
             "usage": 'randomword',
             process: function (msg, command) {
                 function doCommand() {
-                    let index = common.getRandomInt(0, words.length);
+                    let index = common.getRandomInt(0, words.length - 1);
                     let word = words[index];
                     msg.channel.send(common.embedMessage(color.main, `Word [${index}]`, `${word}`));
                 }

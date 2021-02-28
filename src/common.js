@@ -65,7 +65,7 @@ module.exports = {
             global.config = JSON.parse(jsonString);
             version = config.version;
             commandPrefix = config.commandPrefix;
-            client.login(config.clientId);
+            return client.login(config.clientId);
         });
     }
 }
