@@ -4,7 +4,6 @@ const https = require('https');
 const math = require('mathjs');
 
 const common = require('./common.js');
-//TODO: Command Ideas = ["Random Word"]
 module.exports = {
     "commands": {
         "8ball": {
