@@ -54,6 +54,12 @@ module.exports = {
         return  rng()
     },
 
+    getRandomInt: function (min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+
     loadConfig: function (configFile) {
         fs.readFile(configFile, 'utf-8', (err, jsonString) => {
             global.config = JSON.parse(jsonString);

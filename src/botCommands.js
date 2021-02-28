@@ -201,6 +201,24 @@ module.exports = {
                 msg.channel.send(common.embedMessage(hexCode, 'Random Color :paintbrush:', `**HEX:** \`#${hexCode}\``).setThumbnail(`https://dummyimage.com/100x100/${hexCode}/Color.png&text=+`));
             }
         },
+        "randomword": {
+            "help": common.embedMessage(color.help, 'Help: Random Word', 'Generates random word!\nUsage: `$randomword`'),
+            "usage": 'randomword',
+            process: function (msg, command) {
+                function doCommand() {
+                    let index = common.getRandomInt(0, words.length);
+                    let word = words[index];
+                    msg.channel.send(common.embedMessage(color.main, `Word [${index}]`, `${word}`));
+                }
+
+                if (typeof (global.words) !== 'undefined' && global.words) {
+                    doCommand();
+                } else {
+                    global.words = JSON.parse(fs.readFileSync('./assets/words.json', 'utf8'));
+                    doCommand();
+                }
+            }
+        },
         "say": {
             "help": common.embedMessage(color.help, 'Help: Say', 'Says Stuff\nUsage: `$say <text>`'),
             "usage": 'say <text>',
