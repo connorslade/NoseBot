@@ -19,7 +19,9 @@ function componentToHex(c) {
 }
 
 module.exports = {
-    embedMessage: function (embedColor, title, text) { return new Discord.MessageEmbed().setColor(embedColor).setTitle(title).setDescription(text) },
+    embedMessage: function (embedColor, title, text) {
+        return new Discord.MessageEmbed().setColor(embedColor).setTitle(title).setDescription(text)
+    },
 
     msToTime: function (duration) {
         let milliseconds, seconds, minutes, hours;
@@ -62,7 +64,7 @@ module.exports = {
 
     randomFromSeed: function (string) {
         let rng = randomSeed(string);
-        return  rng()
+        return rng()
     },
 
     getRandomInt: function (min, max) {
