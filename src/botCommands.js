@@ -138,32 +138,18 @@ module.exports = {
             "help": common.embedMessage(color.help, 'Help: Meme', 'Sends a **Relevant** Meme\nUsage: `$meme [nsfw]`'),
             "usage": 'meme [nsfw]',
             process: function (msg, command) {
-                function sendMeme() {
-                    https.get('https://meme-api.herokuapp.com/gimme', (response) => {
-                        let todo = '';
-                        response.on('data', (chunk) => {
-                            todo += chunk;
-                        });
-
-                        response.on('end', () => {
-                            let jsonResponse = JSON.parse(todo);
-
-                            if (jsonResponse['nsfw'] === false) {
-                                msg.channel.send(common.embedMessage(color.nose, `𝓜 𝓔 𝓜 𝓔`, `**Title:** ${jsonResponse['title']}\n**Author:** ${jsonResponse['author']}\n**UpVotes:** ${common.numberWithCommas(jsonResponse['ups'])}`).setImage(jsonResponse['url']).setURL(jsonResponse['postLink']));
-                            } else {
-                                if (command.length > 1){
-                                    msg.channel.send('debug');
-                                    msg.channel.send(common.embedMessage(color.nose, `𝓜 𝓔 𝓜 𝓔 [NSFW]`, `**Title:** ${jsonResponse['title']}\n**Author:** ${jsonResponse['author']}\n**UpVotes:** ${common.numberWithCommas(jsonResponse['ups'])}`).setImage(jsonResponse['url']).setURL(jsonResponse['postLink']));
-                                }
-                                else {
-                                    sendMeme();
-                                }
-                            }
-                        });
+                https.get('https://meme-api.herokuapp.com/gimme', (response) => {
+                    let todo = '';
+                    response.on('data', (chunk) => {
+                        todo += chunk;
                     });
-                }
 
-                sendMeme();
+                    response.on('end', () => {
+                        let jsonResponse = JSON.parse(todo);
+                        msg.channel.send(common.embedMessage(color.nose, `𝓜 𝓔 𝓜 𝓔`, `**Title:** ${jsonResponse['title']}\n**Author:** ${jsonResponse['author']}\n**UpVotes:** ${common.numberWithCommas(jsonResponse['ups'])}`).setImage(jsonResponse['url']).setURL(jsonResponse['postLink']));
+                    });
+                });
+
             }
         },
         "minecraft": {
