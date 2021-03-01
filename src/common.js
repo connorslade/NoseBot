@@ -2,6 +2,17 @@ const randomSeed = require('seedrandom');
 const Discord = require("discord.js");
 const fs = require("fs");
 
+global.color = {
+    "main": "#2fc290",
+    "help": "#E8DD4D",
+    "red": "#DB5953",
+    "link": "#27E2E8",
+    "nose": "#00EAFF",
+    "minecraft": "#00FF6C",
+    "Ball": "#5AA2DE",
+    "amongUs": "#FFDF1E"
+};
+
 function componentToHex(c) {
     let hex = c.toString(16);
     return hex.length === 1 ? "0" + hex : hex;
