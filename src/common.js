@@ -73,6 +73,10 @@ module.exports = {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     },
 
+    numberWithCommas: function (x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+
     loadConfig: function (configFile) {
         fs.readFile(configFile, 'utf-8', (err, jsonString) => {
             global.config = JSON.parse(jsonString);
