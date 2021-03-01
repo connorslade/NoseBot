@@ -64,7 +64,7 @@ module.exports = {
         fs.readFile(configFile, 'utf-8', (err, jsonString) => {
             global.config = JSON.parse(jsonString);
             version = config.version;
-            commandPrefix = config.commandPrefix;
+            global.commandPrefix = config.commandPrefix;
             return client.login(config.clientId);
         });
     }
