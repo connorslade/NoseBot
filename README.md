@@ -50,7 +50,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Screen Shot](https://i.imgur.com/ZzxZQYx.png)](https://github.com/Basicprogrammer10/NoseBot)
+[![Screen Shot](https://i.imgur.com/ErilExw.png)](https://github.com/Basicprogrammer10/NoseBot)
 
 The Main GUI...
 
