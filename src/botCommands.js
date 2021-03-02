@@ -6,6 +6,7 @@ const math = require('mathjs');
 const common = require('./common.js');
 module.exports = {
     //TODO: HTTP.GET function in Common
+    //TODO: Birthday
     "commands": {
         "8ball": {
             "help": common.embedMessage(color.help, 'Help: 8Ball', 'Asks the 8Ball\nUsage: `$8ball <question>`'),
@@ -40,6 +41,14 @@ module.exports = {
                 } else {
                     msg.channel.send(common.embedMessage(color.red, 'Error', 'No code Supplied\nUsage: `$among-us <code>`'));
                 }
+            }
+        },
+        "birthday": {
+            "help": common.embedMessage(color.help, 'Help: birthday', 'Sends among us server code\nUsage: `$birthday`'),
+            "usage": 'birthday',
+            process: function (msg, command) {
+                msg.channel.send("B I R T H D A Y");
+                //msg.channel.send(common.embedMessage(color.main, 'Happy Birthday to ME!  :cake: ', 'Hooray Its my _ birthday!!!'));
             }
         },
         "bugreport": {
@@ -134,6 +143,20 @@ module.exports = {
                 });
             }
         },
+        "js": {
+            "help": common.embedMessage(color.help, 'Help: JS', 'Safely Runs Javascript Code\nUsage: `$js [code]`'),
+            "usage": 'js [code]',
+            process: function (msg, command) {
+                let working = command.join(' ');
+                working = working.split('js ')[1];
+                try {
+                    let ret = common.runUserCode(working);
+                    msg.channel.send(common.embedMessage(color.main, 'JS :computer:', `**Code:** \`${working}\`\n**Return:** \`${ret}\``));
+                } catch (e) {
+                    msg.channel.send(common.embedMessage(color.red, 'JS :computer:', `**Code:** \`${working}\`\n**Error:** \`${e}\``));
+                }
+            }
+        },
         "meme": {
             "help": common.embedMessage(color.help, 'Help: Meme', 'Sends a **Relevant** Meme\nUsage: `$meme [nsfw]`'),
             "usage": 'meme [nsfw]',
@@ -146,7 +169,7 @@ module.exports = {
 
                     response.on('end', () => {
                         let jsonResponse = JSON.parse(todo);
-                        msg.channel.send(common.embedMessage(color.nose, `𝓜 𝓔 𝓜 𝓔 ${jsonResponse['nsfw'] ? '[NSFW]' : ''}`, `**Title:** ${jsonResponse['title']}\n**Author:** ${jsonResponse['author']}\n**UpVotes:** ${common.numberWithCommas(jsonResponse['ups'])}`).setImage(jsonResponse['url']).setURL(jsonResponse['postLink']));
+                        msg.channel.send(common.embedMessage(color.nose, `𝓜 𝓔 𝓜 𝓔 ${(jsonResponse['nsfw']) ? '[NSFW]' : ''}`, `**Title:** ${jsonResponse['title']}\n**Author:** ${jsonResponse['author']}\n**UpVotes:** ${common.numberWithCommas(jsonResponse['ups'])}`).setImage(jsonResponse['url']).setURL(jsonResponse['postLink']));
                     });
                 });
 

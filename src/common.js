@@ -1,5 +1,6 @@
 const randomSeed = require('seedrandom');
 const Discord = require("discord.js");
+const {VM} = require('vm2');
 const fs = require("fs");
 
 global.color = {
@@ -75,6 +76,17 @@ module.exports = {
 
     numberWithCommas: function (x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+
+    runUserCode: function (code) {
+        const vm = new VM({
+            timeout: 1000,
+            sandbox: {isSandBox: true},
+            eval: false,
+            wasm: false
+        });
+        let ret = vm.run(code);
+        return ret;
     },
 
     loadConfig: function (configFile) {
