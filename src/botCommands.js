@@ -43,14 +43,6 @@ module.exports = {
                 }
             }
         },
-        "birthday": {
-            "help": common.embedMessage(color.help, 'Help: birthday', 'Sends among us server code\nUsage: `$birthday`'),
-            "usage": 'birthday',
-            process: function (msg, command) {
-                msg.channel.send("B I R T H D A Y");
-                //msg.channel.send(common.embedMessage(color.main, 'Happy Birthday to ME!  :cake: ', 'Hooray Its my _ birthday!!!'));
-            }
-        },
         "bugreport": {
             "help": common.embedMessage(color.help, 'Help: Bugreport', 'Reports a Bug\nUsage: `$bugreport <text>`'),
             "usage": 'bugreport <text>',
@@ -149,9 +141,12 @@ module.exports = {
             process: function (msg, command) {
                 let working = command.join(' ');
                 working = working.split('js ')[1];
+                if (working.includes('```js')) {
+                    working = working.replace('```js\n', '```').split('```')[1];
+                }
                 try {
                     let ret = common.runUserCode(working);
-                    msg.channel.send(common.embedMessage(color.main, 'JS :computer:', `**Code:** \`${working}\`\n**Return:** \`${ret}\``));
+                    msg.channel.send(common.embedMessage(color.main, 'JS :computer:', `**Code:** \`\`\`js${working}\`\`\`\n**Return:** \`${ret}\``));
                 } catch (e) {
                     msg.channel.send(common.embedMessage(color.red, 'JS :computer:', `**Code:** \`${working}\`\n**Error:** \`${e}\``));
                 }
