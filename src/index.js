@@ -11,18 +11,20 @@ client.on('ready', () => {
 });
 
 client.on("message", async (msg) => {
-    if (msg.content.charAt(0).toLowerCase() === commandPrefix) {
-        console.log('\033[32m' + msg['author']['username'] + '#' + msg['author']['discriminator'] + ': ' + msg.content + '\033[0m')
-        let command = msg.content.split(commandPrefix)[1].split(' ');
-        if (Object.keys(commandJS.commands).includes(command[0].toLowerCase())) {
-            try {
-                commandJS.commands[command[0].toLowerCase()].process(msg, command);
-            } catch (e) {
-                msg.channel.send(common.embedMessage(color.red, 'Error', 'Please report this Bug to **Sigma#8214**\n`' + e + '`'));
-            }
-        } else {
-            msg.channel.send(common.embedMessage(color.red, 'Error', `Unknown Command\nTry \`${commandPrefix}help\``));
-        }
+    console.log('\033[32m' + `${msg['author']['username']}#${msg['author']['discriminator']}: ${msg.content}` + '\033[0m')
+
+    let command = msg.content.replace(commandPrefix, '').split(' ');
+    if (!msg.content.startsWith(commandPrefix)) {
+        return;
+    }
+    if (!Object.keys(commandJS.commands).includes(command[0].toLowerCase())) {
+        msg.channel.send(common.embedMessage(color.red, 'Error', `Unknown Command\nTry \`${commandPrefix}help\``));
+        return;
+    }
+    try {
+        commandJS.commands[command[0].toLowerCase()].process(msg, command);
+    } catch (e) {
+        msg.channel.send(common.embedMessage(color.red, 'Error', 'Please report this Bug to **Sigma#8214**\n`' + e + '`'));
     }
 });
 
