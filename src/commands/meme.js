@@ -4,7 +4,7 @@ const https = require('https');
 module.exports = {
     "help": common.embedMessage(color.help, 'Help: Meme', 'Sends a **Relevant** Meme\nUsage: `$meme [nsfw]`'),
     "usage": 'meme [nsfw]',
-    process: function (msg, command) {
+    process: function (msg) {
         https.get('https://meme-api.herokuapp.com/gimme', (response) => {
             let todo = '';
             response.on('data', (chunk) => {

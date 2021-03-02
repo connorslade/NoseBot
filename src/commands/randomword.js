@@ -4,7 +4,7 @@ const fs = require("fs");
 module.exports = {
     "help": common.embedMessage(color.help, 'Help: Random Word', 'Generates random word!\nUsage: `$randomword`'),
     "usage": 'randomword',
-    process: function (msg, command) {
+    process: function (msg) {
         function doCommand() {
             let index = common.getRandomInt(0, words.length - 1);
             let word = words[index];

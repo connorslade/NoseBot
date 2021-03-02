@@ -4,7 +4,7 @@ const fs = require("fs");
 module.exports = {
     "help": common.embedMessage(color.help, 'Help: FOTD', 'Sends you a Random Fact! :grin:\nUsage: `$fotd`'),
     "usage": 'fotd',
-    process: function (msg, command) {
+    process: function (msg) {
         function doCommand() {
             let randomFact = Math.floor(Math.random() * (global.facts.length - 1) + 1);
             msg.channel.send(common.embedMessage(color.main, `FOTD :factory: [${randomFact}]`, '**Fact of that day!!!**\n```' + global.facts[randomFact] + '```'));

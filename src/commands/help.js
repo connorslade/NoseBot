@@ -14,7 +14,7 @@ module.exports = {
         }
         working = '```\n';
 
-        commands.forEach(function (item, index) {
+        commands.forEach(function (item) {
             let use = client.commands.get(item).usage;
             if (use === undefined) return;
             working += `${commandPrefix}${use}\n`;

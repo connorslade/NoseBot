@@ -1,5 +1,5 @@
 const common = require('./../common.js');
-const {magneticConstantDependencies, max, min} = require("mathjs");
+const {max, min} = require("mathjs");
 
 module.exports = {
     "help": common.embedMessage(color.help, 'Help: Random', 'Generates random Numbers\nUsage: `$random <min> <max>`'),
