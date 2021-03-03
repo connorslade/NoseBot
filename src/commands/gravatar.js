@@ -2,7 +2,7 @@ const common = require('./../common.js');
 const crypto = require("crypto");
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: Instant Answer', 'Sends you your Gravatar! :grin:\nUsage: `$gravatar <email>`'),
+    "help": common.embedMessage(color.help, 'Help: Gravatar', 'Sends you your Gravatar! :grin:\nUsage: `$gravatar <email>`'),
     "usage": 'gravatar <email>',
     process: function (msg, command) {
         let working = command.join('');
