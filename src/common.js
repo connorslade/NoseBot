@@ -85,8 +85,7 @@ module.exports = {
             eval: false,
             wasm: false
         });
-        let ret = vm.run(code);
-        return ret;
+        return vm.run(code);
     },
 
     loadConfig: function (configFile) {

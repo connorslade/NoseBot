@@ -13,16 +13,15 @@ for (const file of commandFiles) {
 
 client.on('ready', () => {
     console.log("\033[32mLogged in as \033[36m" + client.user.tag + "\033[0m");
-    client.user.setActivity(config.activity).then(() => {});
+    client.user.setActivity(config.activity).then(() => {
+    });
 });
 
 client.on("message", async (msg) => {
     console.log('\033[32m' + `${msg.author.username}#${msg.author.discriminator}: ${msg.content}` + '\033[0m')
     let command = msg.content.replace(commandPrefix, '').split(' ');
 
-    if (!msg.content.startsWith(commandPrefix)) {
-        return;
-    }
+    if (!msg.content.startsWith(commandPrefix)) return;
     if (!client.commands.has(command[0].toLowerCase())) {
         msg.channel.send(common.embedMessage(color.red, 'Error', `Unknown Command\nTry \`${commandPrefix}help\``));
         return;
