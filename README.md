@@ -52,12 +52,13 @@
 
 [![Screen Shot](https://i.imgur.com/VlIH7Zr.png)](https://github.com/Basicprogrammer10/NoseBot)
 
-The Main GUI...
+Commands ⬆
 
 ### Built With
 
 * [NodeJS](https://nodejs.org/)
 * [Discord.JS](https://discord.js.org/#/)
+* [Docker](https://www.docker.com/)
 
 
 <!-- GETTING STARTED -->
@@ -67,13 +68,16 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* [NodeJS](https://nodejs.org/) (To run the Program)
+* [Docker](https://www.docker.com/)
+* [Git](https://git-scm.com/)
 
 ### Installation
 
-1. Download the Latest version of this program
-2. Edit the `config.json` file to have ytour bot token etc.
-3. Run It! `node index.js`!
+1. Git Clone the Repo (`git clone https://github.com/Basicprogrammer10/NoseBot.git`)
+2. Go into the folder (`cd NoseBot`)
+3. Rename `config-template.json` to `config.json` and edit it to have your bot token etc.
+4. Build the Docker Container (`sudo docker build . -t basicprogrammer10/nosebot`)
+5. Run the Image (`sudo docker run basicprogrammer10/nosebot`)
 
 <!-- CONTRIBUTING -->
 ## Contributing
