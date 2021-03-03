@@ -3,7 +3,7 @@
   "version": "0.2.00",
   "description": "NoseBot — The most Nosetastic Discord Bot! ",
   "repository": "https://github.com/Basicprogrammer10/NoseBot",
-  "license": "GPL-3.0 License",
+  "license": "GPL-3.0",
   "dependencies": {
     "discord.js": "^12.5.1",
     "mathjs": "^9.2.0",
