@@ -26,8 +26,9 @@ client.on("message", async (msg) => {
 
     if (!msg.content.startsWith(commandPrefix)) return;
     if (!client.commands.has(command[0].toLowerCase())) {
-        let suggestion = common.findBestMatch(command[0], allCommands).bestMatch.target;
-        msg.channel.send(common.embedMessage(color.red, 'Error', `Unknown Command\nDid You Mean: **${commandPrefix}${suggestion}**?\nUse \`${commandPrefix}help\` for all commands`));//TODO:Add A Yes I did mean that Button to run the command?
+        let suggestion = common.findBestMatch(command[0], allCommands).bestMatch;
+        let text = `Unknown Command\nDid You Mean: **${commandPrefix}${(suggestion.rating !== 0) ? suggestion.target : 'help'}**? (${Math.round(suggestion.rating * 100)}%)\nUse \`${commandPrefix}help\` for all commands`;
+        msg.channel.send(common.embedMessage(color.red, 'Error', text));
         return;
     }
     try {
