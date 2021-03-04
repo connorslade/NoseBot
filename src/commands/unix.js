@@ -2,7 +2,7 @@ const common = require('./../common.js');
 const fs = require("fs");
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: unix', 'Gives Information on unix Commands\nUsage: `$unix [commandName]`'),
+    "help": 'Gives Information on unix Commands',
     "usage": 'unix [commandName]',
     process: function (msg, command) {
         function doCommand() {
@@ -19,9 +19,9 @@ module.exports = {
 
         if (typeof (global.unixCommands) !== 'undefined' && global.unixCommands) {
             doCommand();
-        } else {
-            global.unixCommands = JSON.parse(fs.readFileSync('./assets/unixCommands.json', 'utf8'));
-            doCommand();
+            return;
         }
+        global.unixCommands = JSON.parse(fs.readFileSync('./assets/unixCommands.json', 'utf8'));
+        doCommand();
     }
 }

@@ -1,7 +1,7 @@
 const common = require('./../common.js');
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: 8Ball', 'Asks the 8Ball\nUsage: `$8ball <question>`'),
+    "help": 'Asks the 8Ball',
     "usage": '8ball <question>',
     process: function (msg, command) {
         let Ball = [

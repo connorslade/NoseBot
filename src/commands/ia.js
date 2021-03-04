@@ -2,7 +2,7 @@ const common = require('./../common.js');
 const https = require('https');
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: Instant Answer', 'Sends you DuckDuckGo Instant Answer! :grin:\nUsage: `$ia [question]`'),
+    "help": 'Sends you DuckDuckGo Instant Answer! :grin:',
     "usage": 'ia [question]',
     process: async function (msg, command) {
         let working = command.join(' ');

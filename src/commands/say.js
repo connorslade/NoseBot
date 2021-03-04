@@ -1,7 +1,7 @@
 const common = require('./../common.js');
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: Say', 'Says Stuff\nUsage: `$say <text>`'),
+    "help": 'Says Stuff',
     "usage": 'say <text>',
     process: function (msg, command) {
         let working;
@@ -15,8 +15,8 @@ module.exports = {
             } else {
                 msg.channel.send(common.embedMessage(color.red, 'Error', 'I cant run my own commands :joy:'));
             }
-        } else {
-            msg.channel.send(common.embedMessage(color.red, 'Error', 'No text Supplied'));
+            return;
         }
+        msg.channel.send(common.embedMessage(color.red, 'Error', 'No text Supplied'));
     }
 }

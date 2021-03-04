@@ -1,7 +1,7 @@
 const common = require('./../common.js');
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: Render', 'Gives link to render of cords\nUsage: `$render <x> <z> [DimensionID]`\n0 - Overworld  |  1 - End'),
+    "help": 'Gives link to render of cords',
     "usage": 'render <x> <z> [DimensionID]',
     process: function (msg, command) {
         let dimID;

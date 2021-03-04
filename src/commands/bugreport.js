@@ -1,7 +1,7 @@
 const common = require('./../common.js');
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: Bugreport', 'Reports a Bug\nUsage: `$bugreport <text>`'),
+    "help": 'Reports a Bug',
     "usage": 'bugreport <text>',
     process: function (msg, command) {
         if (command.length > 1) {

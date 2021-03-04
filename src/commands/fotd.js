@@ -2,7 +2,7 @@ const common = require('./../common.js');
 const fs = require("fs");
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: FOTD', 'Sends you a Random Fact! :grin:\nUsage: `$fotd`'),
+    "help": 'Sends you a Random Fact! :grin:',
     "usage": 'fotd',
     process: function (msg) {
         function doCommand() {
@@ -12,9 +12,9 @@ module.exports = {
 
         if (typeof (global.facts) !== 'undefined' && global.facts) {
             doCommand();
-        } else {
-            global.facts = JSON.parse(fs.readFileSync('./assets/facts.json', 'utf8'));
-            doCommand();
+            return;
         }
+        global.facts = JSON.parse(fs.readFileSync('./assets/facts.json', 'utf8'));
+        doCommand();
     }
 }

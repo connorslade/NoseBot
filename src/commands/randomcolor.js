@@ -1,7 +1,7 @@
 const common = require('./../common.js');
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: Random Color', 'Generates random color!\nUsage: `$randomcolor`'),
+    "help": 'Generates random color!',
     "usage": 'randomcolor',
     process: function (msg) {
         let hexCode = common.rgbToHex(Math.floor(Math.random() * 255) + 1, Math.floor(Math.random() * 255) + 1, Math.floor(Math.random() * 255) + 1);

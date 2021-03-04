@@ -2,7 +2,7 @@ const common = require('./../common.js');
 const fs = require("fs");
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: Advice', 'Sends you Random Advice! :grin:\nUsage: `$advice`'),
+    "help": 'Sends you Random Advice! :grin:',
     "usage": 'advice',
     process: function (msg) {
         function doCommand() {

@@ -1,7 +1,7 @@
 const common = require('./../common.js');
 
 module.exports = {
-    "help": common.embedMessage(color.help, 'Help: JS', 'Safely Runs Javascript Code\nUsage: `$js [code]`'),
+    "help": 'Safely Runs Javascript Code',
     "usage": 'js [code]',
     process: function (msg, command) {
         let working = command.join(' ');

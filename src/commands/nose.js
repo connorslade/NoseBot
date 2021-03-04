@@ -2,7 +2,7 @@ const common = require('./../common.js');
 
 module.exports = {
     //TODO: Get / Store Images On Bot Side?
-    "help": common.embedMessage(color.help, 'Help: Nose', 'Noses You!\nUsage: `$nose`'),
+    "help": 'Noses You!',
     "usage": 'nose',
     process: function (msg) {
         let x = Math.floor((Math.random() * 89) + 1);
