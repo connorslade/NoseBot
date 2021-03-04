@@ -8,7 +8,7 @@ module.exports = {
         let working = command.join(' ');
         working = working.split('ia ')[1];
 
-        let Loading = await msg.channel.send(common.embedMessage(color.link, `Loading Instant Answer...`, 'Hang Tight!'));
+        let Loading = await msg.channel.send(common.embedMessage(color.link, `Loading Instant AnswSer...`, 'Hang Tight!'));
 
             https.get(`https://api.duckduckgo.com/?q=${encodeURI(working)}&format=json&pretty=1&atb=v214-1`, (response) => {
             let todo = '';
@@ -33,6 +33,10 @@ module.exports = {
 
                 if (!(jsonResponse['RelatedTopics'][0] === undefined)) {
                     let bodyContent = `\`\`\`${jsonResponse['RelatedTopics'][0]['Text']}\`\`\``;
+                    if (jsonResponse['RelatedTopics'][0]['Icon']['URL'] === ""){
+                        Loading.edit(common.embedMessage(color.nose, `**Search:** ${jsonResponse['Heading']} {BETA}`, bodyContent).setURL(jsonResponse['AbstractURL']));
+                        return;
+                    }
                     Loading.edit(common.embedMessage(color.nose, `**Search:** ${jsonResponse['Heading']} {BETA}`, bodyContent).setURL(jsonResponse['AbstractURL']).setImage(`https://api.duckduckgo.com/${jsonResponse['RelatedTopics'][0]['Icon']['URL']}`));
                 }
 
