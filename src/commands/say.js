@@ -12,9 +12,9 @@ module.exports = {
             }
             if (working.length > 1) {
                 msg.channel.send(common.embedMessage(color.main, working, "").setFooter(`${msg.author.username}#${msg.author.discriminator}`));
-            } else {
-                msg.channel.send(common.embedMessage(color.red, 'Error', 'I cant run my own commands :joy:'));
+                return;
             }
+            msg.channel.send(common.embedMessage(color.red, 'Error', 'I cant run my own commands :joy:'));
             return;
         }
         msg.channel.send(common.embedMessage(color.red, 'Error', 'No text Supplied'));

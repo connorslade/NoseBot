@@ -8,8 +8,8 @@ module.exports = {
             let working = command.join(' ').toLowerCase().replace('bugreport ', '');
             let reportUri = `https://github.com/Basicprogrammer10/NoseBot/issues/new?title=BUG&body=${working}`;
             msg.channel.send(common.embedMessage(color.main, 'Bugreport :bug:', 'Click the title to submit report!').setURL(encodeURI(reportUri)));
-        } else {
-            msg.channel.send(common.embedMessage(color.red, 'Error', 'No text Supplied'));
+            return;
         }
+        msg.channel.send(common.embedMessage(color.red, 'Error', 'No text Supplied'));
     }
 }

@@ -12,9 +12,9 @@ module.exports = {
 
         if (typeof (global.advice) !== 'undefined' && global.advice) {
             doCommand();
-        } else {
-            global.advice = JSON.parse(fs.readFileSync('./assets/advice.json', 'utf8'));
-            doCommand();
+            return;
         }
+        global.advice = JSON.parse(fs.readFileSync('./assets/advice.json', 'utf8'));
+        doCommand();
     }
 }
