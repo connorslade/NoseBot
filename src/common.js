@@ -21,11 +21,12 @@ function componentToHex(c) {
 }
 
 function compareTwoStrings(first, second) {
+    //From https://github.com/aceakash/string-similarity
     first = first.replace(/\s+/g, '')
     second = second.replace(/\s+/g, '')
 
-    if (first === second) return 1; // identical or empty
-    if (first.length < 2 || second.length < 2) return 0; // if either is a 0-letter or 1-letter string
+    if (first === second) return 1;
+    if (first.length < 2 || second.length < 2) return 0;
 
     let firstBigrams = new Map();
     for (let i = 0; i < first.length - 1; i++) {
@@ -35,7 +36,7 @@ function compareTwoStrings(first, second) {
             : 1;
 
         firstBigrams.set(bigram, count);
-    };
+    }
 
     let intersectionSize = 0;
     for (let i = 0; i < second.length - 1; i++) {
@@ -54,8 +55,61 @@ function compareTwoStrings(first, second) {
 }
 
 module.exports = {
+
+    base64ToPng: function (req) {
+        let base64Data = req.replace(/^data:image\/png;base64,/, "");
+        let buffer = new Buffer.from(base64Data, "base64");
+        return new Discord.MessageAttachment(buffer);
+    },
+
     embedMessage: function (embedColor, title, text) {
         return new Discord.MessageEmbed().setColor(embedColor).setTitle(title).setDescription(text)
+    },
+
+    findBestMatch: function (mainString, targetStrings) {
+        const ratings = [];
+        let bestMatchIndex = 0;
+
+        for (let i = 0; i < targetStrings.length; i++) {
+            const currentTargetString = targetStrings[i];
+            const currentRating = compareTwoStrings(mainString, currentTargetString)
+            ratings.push({target: currentTargetString, rating: currentRating})
+            if (currentRating > ratings[bestMatchIndex].rating) {
+                bestMatchIndex = i
+            }
+        }
+        const bestMatch = ratings[bestMatchIndex]
+
+        return {ratings: ratings, bestMatch: bestMatch, bestMatchIndex: bestMatchIndex};
+    },
+
+    getFormatDT: function () {
+        let currentDate = new Date();
+        return (currentDate.getMonth() + 1) + "/"
+            + currentDate.getDate() + "/"
+            + currentDate.getFullYear() + " — "
+            + currentDate.getHours() + ":"
+            + currentDate.getMinutes() + ":"
+            + currentDate.getSeconds();
+    },
+
+    getRandomInt: function (min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+
+    loadConfig: function (configFile) {
+        fs.readFile(configFile, 'utf-8', (err, jsonString) => {
+            global.config = JSON.parse(jsonString);
+            version = config.version;
+            global.commandPrefix = config.commandPrefix;
+            return client.login(config.clientId);
+        });
+    },
+
+    localImgUploads: function (file, name) {
+        return new Discord.MessageAttachment(file, name);
     },
 
     msToTime: function (duration) {
@@ -73,28 +127,8 @@ module.exports = {
         return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
     },
 
-    getFormatDT: function () {
-        let currentDate = new Date();
-        return (currentDate.getMonth() + 1) + "/"
-            + currentDate.getDate() + "/"
-            + currentDate.getFullYear() + " — "
-            + currentDate.getHours() + ":"
-            + currentDate.getMinutes() + ":"
-            + currentDate.getSeconds();
-    },
-
-    base64ToPng: function (req) {
-        let base64Data = req.replace(/^data:image\/png;base64,/, "");
-        let buffer = new Buffer.from(base64Data, "base64");
-        return new Discord.MessageAttachment(buffer);
-    },
-
-    localImgUploads: function (file, name) {
-        return new Discord.MessageAttachment(file, name);
-    },
-
-    rgbToHex: function (r, g, b) {
-        return componentToHex(r) + componentToHex(g) + componentToHex(b);
+    numberWithCommas: function (x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
 
     randomFromSeed: function (string) {
@@ -102,14 +136,8 @@ module.exports = {
         return rng()
     },
 
-    getRandomInt: function (min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    },
-
-    numberWithCommas: function (x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    rgbToHex: function (r, g, b) {
+        return componentToHex(r) + componentToHex(g) + componentToHex(b);
     },
 
     runUserCode: function (code) {
@@ -120,33 +148,5 @@ module.exports = {
             wasm: false
         });
         return vm.run(code);
-    },
-
-     findBestMatch: function (mainString, targetStrings) {
-    const ratings = [];
-    let bestMatchIndex = 0;
-
-    for (let i = 0; i < targetStrings.length; i++) {
-        const currentTargetString = targetStrings[i];
-        const currentRating = compareTwoStrings(mainString, currentTargetString)
-        ratings.push({target: currentTargetString, rating: currentRating})
-        if (currentRating > ratings[bestMatchIndex].rating) {
-            bestMatchIndex = i
-        }
-    }
-
-
-    const bestMatch = ratings[bestMatchIndex]
-
-    return { ratings: ratings, bestMatch: bestMatch, bestMatchIndex: bestMatchIndex };
-},
-
-    loadConfig: function (configFile) {
-        fs.readFile(configFile, 'utf-8', (err, jsonString) => {
-            global.config = JSON.parse(jsonString);
-            version = config.version;
-            global.commandPrefix = config.commandPrefix;
-            return client.login(config.clientId);
-        });
     }
 }
