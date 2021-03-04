@@ -2,13 +2,16 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const common = require('./common.js');
 
+global.allCommands = [];
 global.client = new Discord.Client();
 global.client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
-    client.commands.set(file.split('.js')[0], command);
+    const cmdName = file.split('.js')[0];
+    allCommands.push(cmdName);
+    client.commands.set(cmdName, command);
 }
 
 client.on('ready', () => {
@@ -23,13 +26,14 @@ client.on("message", async (msg) => {
 
     if (!msg.content.startsWith(commandPrefix)) return;
     if (!client.commands.has(command[0].toLowerCase())) {
-        msg.channel.send(common.embedMessage(color.red, 'Error', `Unknown Command\nTry \`${commandPrefix}help\``));
+        let suggestion = common.findBestMatch(command[0], allCommands).bestMatch.target;
+        msg.channel.send(common.embedMessage(color.red, 'Error', `Unknown Command\nDid You Mean: **${commandPrefix}${suggestion}**?\nUse \`${commandPrefix}help\`for all commands`));
         return;
     }
     try {
         await client.commands.get(command[0].toLowerCase()).process(msg, command);
     } catch (e) {
-        msg.channel.send(common.embedMessage(color.red, 'Error', 'Please report this Bug to **Sigma#8214**\n`' + e + '`'));
+        msg.channel.send(common.embedMessage(color.red, 'Error', 'Please report this Bug to **Sigma#8214**\n\`' + e + '\`'));
     }
 });
 
