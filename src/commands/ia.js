@@ -8,6 +8,11 @@ module.exports = {
         let working = command.join(' ');
         working = working.split('ia ')[1];
 
+        if (working === undefined) {
+            msg.channel.send(common.embedMessage(color.red, 'Error', 'No question Supplied...\nUsage: `$ia [question]`'));
+            return;
+        }
+
         let Loading = await msg.channel.send(common.embedMessage(color.link, `Loading Instant Answer...`, 'Hang Tight!'));
 
         https.get(`https://api.duckduckgo.com/?q=${encodeURI(working)}&format=json&pretty=1&atb=v214-1`, (response) => {

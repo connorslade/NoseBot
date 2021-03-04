@@ -1,4 +1,3 @@
-//TODO:Clean up this file (It really Needs it lol)
 const randomSeed = require('seedrandom');
 const Discord = require("discord.js");
 const {VM} = require('vm2');
@@ -21,7 +20,7 @@ function componentToHex(c) {
 }
 
 function compareTwoStrings(first, second) {
-    //From https://github.com/aceakash/string-similarity
+    //Modified From https://github.com/aceakash/string-similarity
     first = first.replace(/\s+/g, '')
     second = second.replace(/\s+/g, '')
 
@@ -31,20 +30,14 @@ function compareTwoStrings(first, second) {
     let firstBigrams = new Map();
     for (let i = 0; i < first.length - 1; i++) {
         const bigram = first.substring(i, i + 2);
-        const count = firstBigrams.has(bigram)
-            ? firstBigrams.get(bigram) + 1
-            : 1;
-
+        const count = firstBigrams.has(bigram) ? firstBigrams.get(bigram) + 1 : 1;
         firstBigrams.set(bigram, count);
     }
 
     let intersectionSize = 0;
     for (let i = 0; i < second.length - 1; i++) {
         const bigram = second.substring(i, i + 2);
-        const count = firstBigrams.has(bigram)
-            ? firstBigrams.get(bigram)
-            : 0;
-
+        const count = firstBigrams.has(bigram) ? firstBigrams.get(bigram) : 0;
         if (count > 0) {
             firstBigrams.set(bigram, count - 1);
             intersectionSize++;
