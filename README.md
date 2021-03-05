@@ -16,11 +16,11 @@
     The most Nosetastic Discord bot ever!
     <br />
     <br />
-    <a href="https://github.com/Basicprogrammer10/WindowOnTop/issues">Report Bug</a>
+    <a href="https://github.com/Basicprogrammer10/NoseBot/issues">Report Bug</a>
     ·
     <a href="https://discord.com/oauth2/authorize?client_id=789262732452954123&scope=bot">Invite Bot</a>
     ·
-    <a href="https://github.com/Basicprogrammer10/WindowOnTop/issues">Request Feature</a>
+    <a href="https://github.com/Basicprogrammer10/NoseBot/issues">Request Feature</a>
 </p>
 
 
