@@ -4,9 +4,10 @@ module.exports = {
     "help": 'No explanation Needed...',
     "usage": 'help [command]',
     process: function (msg, command) {
+        let inviteLink = 'https://discord.com/oauth2/authorize?client_id=789262732452954123&scope=bot';
         let commands = Array.from(global.client.commands.keys());
         let cp = commandPrefix;
-        let working = '```\n';
+        let working ;
         let numCommands = 0;
 
         if (command.length > 1) {
@@ -26,8 +27,7 @@ module.exports = {
             working += `${cp}${use}\n`;
             numCommands++;
         });
-        working += '```';
 
-        msg.channel.send(common.embedMessage(color.main, 'Commands [' + numCommands.toString() + ']', working));
+        msg.channel.send(common.embedMessage(color.main, 'Commands [' + numCommands.toString() + ']', `\`\`\`\n${working}\`\`\`\n[▷ Invite NoseBot to your Server here ◁](${inviteLink})`));
     }
 }
