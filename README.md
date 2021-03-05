@@ -1,7 +1,7 @@
 
 [![Image](https://img.shields.io/badge/Download-V0.2.00-sucess?style=for-the-badge)](https://github.com/Basicprogrammer10/NoseBot/releases/) 
 [![Image](https://img.shields.io/badge/NodeJS-V15.6.0-informational?style=for-the-badge)](https://nodejs.org/)
-[![Image](https://img.shields.io/badge/Invite_Bot-Now-sucess?style=for-the-badge)](https://discord.com/oauth2/authorize?client_id=789262732452954123&scope=bot)
+[![Image](https://img.shields.io/badge/Invite_Bot-Now-lime?style=for-the-badge)](https://discord.com/oauth2/authorize?client_id=789262732452954123&scope=bot)
 ![Image](https://img.shields.io/badge/Contains-Tasty_Spaghetti_Code-orange?style=for-the-badge)
 
 <br />
@@ -52,7 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Screen Shot](https://i.imgur.com/VlIH7Zr.png)
+![Screen Shot](https://i.imgur.com/xjL5g6O.png)
 
 Commands ⬆
 
