@@ -7,7 +7,7 @@ module.exports = {
         let inviteLink = 'https://discord.com/oauth2/authorize?client_id=789262732452954123&scope=bot';
         let commands = Array.from(global.client.commands.keys());
         let cp = commandPrefix;
-        let working ;
+        let working = '';
         let numCommands = 0;
 
         if (command.length > 1) {
@@ -22,6 +22,7 @@ module.exports = {
         }
 
         commands.forEach(function (item) {
+            if (disabledCommands.includes(item)) return;
             let use = client.commands.get(item).usage;
             if (use === undefined) return;
             working += `${cp}${use}\n`;

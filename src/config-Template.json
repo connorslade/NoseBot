@@ -2,6 +2,7 @@
     "clientId": "<CLIENT ID>",
     "adminId": "466967710685855744",
     "activity": "$help",
-    "version": "0.2.21",
-    "commandPrefix": "$"
+    "version": "0.2.22",
+    "commandPrefix": "$",
+    "disabledCommands": ["eval"]
 }

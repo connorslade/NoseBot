@@ -97,6 +97,7 @@ module.exports = {
             global.config = JSON.parse(jsonString);
             version = config.version;
             global.commandPrefix = config.commandPrefix;
+            global.disabledCommands = config.disabledCommands;
             return client.login(config.clientId);
         });
     },

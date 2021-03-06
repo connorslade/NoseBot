@@ -31,6 +31,10 @@ client.on("message", async (msg) => {
         msg.channel.send(common.embedMessage(color.red, 'Error', text));
         return;
     }
+    if (disabledCommands.includes(command[0])) {
+        msg.channel.send(common.embedMessage(color.help, 'Command Disabled by Admin', ''));
+        return;
+    }
     try {
         await client.commands.get(command[0].toLowerCase()).process(msg, command);
     } catch (e) {
