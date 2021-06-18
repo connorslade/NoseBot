@@ -2,6 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const common = require('./common.js');
 
+global.crashes = 0;
 global.allCommands = [];
 global.client = new Discord.Client();
 global.client.commands = new Discord.Collection();
@@ -39,6 +40,7 @@ client.on("message", async (msg) => {
         await client.commands.get(command[0].toLowerCase()).process(msg, command);
     } catch (e) {
         msg.channel.send(common.embedMessage(color.red, 'Error', 'Please report this Bug to **Sigma#8214**\n\`' + e + '\`'));
+        global.crashes++;
     }
 });
 
