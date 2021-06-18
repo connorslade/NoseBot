@@ -30,7 +30,10 @@ module.exports = {
 
                 if (!(jsonResponse['Abstract'] === "")) {
                     let contents = jsonResponse['Infobox']['content'];
-                    let footerContent = (contents !== undefined) ? `${contents[0]['label']} — ${contents[0]['value']}\n${contents[1]['label']} — ${contents[1]['value']}\n${contents[2]['label']} — ${contents[2]['value']}` : '';
+                    let footerContent = ' '
+                    try {
+                        footerContent = (contents !== undefined) ? `${contents[0]['label']} — ${contents[0]['value']}\n${contents[1]['label']} — ${contents[1]['value']}\n${contents[2]['label']} — ${contents[2]['value']}` : '';
+                    } catch (e) { }
                     let bodyContent = `\`\`\`${jsonResponse['AbstractText'].split('.').slice(0, 3).join('.')}...\`\`\``;
                     Loading.edit(common.embedMessage(color.nose, `**Search:** ${jsonResponse['Heading']}`, bodyContent).setURL(jsonResponse['AbstractURL']).setFooter(footerContent));
                     return;
